@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutLog {
+    // Static list to store all workouts
+    private static final ArrayList<WorkoutLog> workouts = new ArrayList<>();
     private final String date;
     private final String exercise;
     private final int reps;
     private final int sets;
-
-    // Static list to store all workouts
-    private static final ArrayList<WorkoutLog> workouts = new ArrayList<>();
 
     public WorkoutLog(String date, String exercise, int reps, int sets) throws InvalidWorkoutException {
         // Validate inputs
