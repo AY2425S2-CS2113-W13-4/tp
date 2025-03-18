@@ -2,7 +2,9 @@ package seedu.healthbud;
 
 import seedu.healthbud.exception.InvalidMealException;
 import seedu.healthbud.exception.InvalidWorkoutReccException;
+import seedu.healthbud.exception.InvalidWaterException;
 import seedu.healthbud.log.Meal;
+import seedu.healthbud.log.Water;
 
 public class Parser {
 
@@ -35,7 +37,30 @@ public class Parser {
         }
         return true;
     }
+    public static void handleWater(LogList logs, String input) throws InvalidWaterException {
+        if (input == null || !input.contains("/d") || !input.contains("/ml") || !input.contains("/t")) {
+            throw new InvalidWaterException();
+        }
 
+        String[] water = input.substring(6).split("/");
+
+        if(water.length != 3){
+            throw new InvalidWaterException();
+        }
+        water[1] = water[1].substring(3).trim();
+        water[2] = water[2].substring(1).trim();
+        if (water[1].isEmpty() || water[2].isEmpty()) {
+            throw new InvalidWaterException();
+        }
+
+        Water newWater = new Water(water[0].trim(), water[1], water[2]);
+        logs.addlog(newWater);
+
+        Ui.printMessage(" Got it. I've added this water:");
+        Ui.printMessage("   " + logs.getLog(logs.getSize() - 1));
+        Ui.printMessage(" Now you have " + logs.getSize() + " water logs in the list.");
+
+    }
     public static void handleMeal(LogList logs, String input) throws InvalidMealException{
         if (input == null || !input.contains("/d") || !input.contains("/t") || !input.contains("/cal")) {
             throw new InvalidMealException();
