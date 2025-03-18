@@ -10,7 +10,7 @@ import seedu.healthbud.exception.InvalidRecommendException;
 import seedu.healthbud.exception.InvalidBMIException;
 import seedu.healthbud.exception.InvalidMealException;
 
-import seedu.healthbud.exception.InvalidWorkoutReccException;
+import seedu.healthbud.exception.InvalidRecommendException;
 import seedu.healthbud.exception.InvalidWaterException;
 import seedu.healthbud.log.Meal;
 import seedu.healthbud.log.Water;
@@ -116,9 +116,9 @@ public class Parser {
         }
     }
 
-    public static void recommendWorkout(String input) throws InvalidWorkoutReccException{
+    public static void recommendWorkout(String input) throws InvalidRecommendException{
         if (input == null || !input.contains("/m")) {
-            throw new InvalidWorkoutReccException();
+            throw new InvalidRecommendException();
         }
 
         String muscle = input.substring(12).trim().toLowerCase();
@@ -181,9 +181,9 @@ public class Parser {
                         + "3. Farmer's Walk");
                 break;
             default:
-                throw new InvalidWorkoutReccException();
+                throw new InvalidRecommendException();
             }
-        } catch (InvalidWorkoutReccException e){
+        } catch (InvalidRecommendException e){
             System.out.println(e.getMessage());
         }
     }
