@@ -12,7 +12,8 @@ public class AddWorkout extends Command {
             // Parse the input
             String[] parts = input.split(" /e | /r | /s ");
             if (parts.length < 4) {
-                throw new InvalidWorkoutException("Invalid workout format. Use: add <date> /e <exercise> /r <reps> /s <sets>");
+                throw new InvalidWorkoutException("Invalid workout format. " +
+                        "Use: add <date> /e <exercise> /r <reps> /s <sets>");
             }
 
             String date = parts[0].replace("add ", "").trim();
