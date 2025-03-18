@@ -50,7 +50,9 @@ public class Ui {
         printMessage("Here are the commands you can use:" + NEW_LINE
                 + "1. Meal <meal name> /cal <calories> /d <date> /t <time> - Add a meal log" + NEW_LINE
                 + "2. Bye - Exit the program" + NEW_LINE
-                + "3. Recommend /m <muscle_group>");
+                + "3. Recommend <muscle_group>" + NEW_LINE
+                + "4. bmi /w <weight_in_kg> /h <height_in_m> - Calculate your BMI" + NEW_LINE
+                + "5. add <date> /e <exercise> /r <reps> /s <sets> ");
     }
 
     /**

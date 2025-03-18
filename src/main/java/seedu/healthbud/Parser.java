@@ -1,10 +1,22 @@
 package seedu.healthbud;
 
+import seedu.healthbud.command.AddLogCommand;
+import seedu.healthbud.command.AddWorkout;
+import seedu.healthbud.command.BMI;
+import seedu.healthbud.command.ListMeal;
+import seedu.healthbud.command.Recommend;
+import seedu.healthbud.exception.HealthBudException;
+import seedu.healthbud.exception.InvalidRecommendException;
+import seedu.healthbud.exception.InvalidBMIException;
 import seedu.healthbud.exception.InvalidMealException;
+
 import seedu.healthbud.exception.InvalidWorkoutReccException;
 import seedu.healthbud.exception.InvalidWaterException;
 import seedu.healthbud.log.Meal;
 import seedu.healthbud.log.Water;
+
+import seedu.healthbud.exception.InvalidWorkoutException;
+
 
 public class Parser {
 
@@ -17,26 +29,34 @@ public class Parser {
             case "bye":
                 return Ui.printGoodbye();
             case "meal":
-                handleMeal(logs, input);
+                new AddLogCommand().execute(logs, input);
                 return true;
             case "help":
                 Ui.printHelp();
                 return true;
             case "list":
-                handleMealList(logs);
+                new ListMeal().execute(logs, input);
                 return true;
             case "recommend":
-                recommendWorkout(input);
+                new Recommend().execute(logs, input);
+                return true;
+            case "bmi":
+                new BMI(input).execute(logs, input);
+                return true;
+            case "add":
+                new AddWorkout().execute(logs, input);
                 return true;
             default:
                 Ui.printUnknownCommand();
                 return true;
             }
-        } catch (InvalidMealException | InvalidWorkoutReccException | IllegalArgumentException e) {
+        } catch (InvalidMealException | InvalidRecommendException
+                 | InvalidWorkoutException | InvalidBMIException | HealthBudException e) {
             System.out.println(e.getMessage());
         }
         return true;
     }
+
     public static void handleWater(LogList logs, String input) throws InvalidWaterException {
         if (input == null || !input.contains("/d") || !input.contains("/ml") || !input.contains("/t")) {
             throw new InvalidWaterException();
@@ -167,4 +187,5 @@ public class Parser {
             System.out.println(e.getMessage());
         }
     }
+
 }
