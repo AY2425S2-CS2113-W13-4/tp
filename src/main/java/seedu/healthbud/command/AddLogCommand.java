@@ -30,12 +30,14 @@ public class AddLogCommand extends Command {
         switch (parts[1]) {
         case "water":
             //`Ui.printMessage(" feature not implemented yet");
+            assert input != null : "Invalid water input!";
+            assert !input.trim().isEmpty() : "Input should not be empty!";
 
             if (!input.contains("/ml") || !input.contains("/d") || !input.contains("/t")) {
                 throw new InvalidWaterException();
             }
 
-            String[] water = input.substring(4).split("/");
+            String[] water = input.substring(3).split("/");
 
             water[1] = water[1].substring(3).trim();
             water[2] = water[2].substring(1).trim();
@@ -45,13 +47,15 @@ public class AddLogCommand extends Command {
                 throw new InvalidWaterException();
             }
 
+            water[0] = water[0].trim();
+            water[0] = water[0].substring(0,1).toUpperCase() + water[0].substring(1);
+
             Water newWater = new Water(water[0].trim(), water[1], water[2], water[3]);
 
             waterLogs.addLog(newWater);
-
             Ui.printMessage(" Got it. I've added this water log:");
 
-            Ui.printMessage("  " + waterLogs.getLog(waterLogs.getSize() - 1));
+            Ui.printMessage(" Type: " + waterLogs.getLog(waterLogs.getSize() - 1));
             Ui.printMessage(" Now you have " + waterLogs.getSize() + " water logs in the list.");
             break;
 
@@ -66,7 +70,7 @@ public class AddLogCommand extends Command {
 
             String[] workout = input.substring(8).split("/");
 
-            if (workout.length != 4) {
+            if (workout.length != 5) {
                 throw new InvalidMealException();
             }
 

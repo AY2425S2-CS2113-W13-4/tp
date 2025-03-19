@@ -48,11 +48,12 @@ public class Ui {
      */
     public static void printHelp() {
         printMessage("Here are the commands you can use:" + NEW_LINE
-                + "1. Meal <meal name> /cal <calories> /d <date> /t <time> - Add a meal log" + NEW_LINE
-                + "2. Bye - Exit the program" + NEW_LINE
-                + "3. Recommend <muscle_group>" + NEW_LINE
-                + "4. bmi /w <weight_in_kg> /h <height_in_m> - Calculate your BMI" + NEW_LINE
-                + "5. add <date> /e <exercise> /r <reps> /s <sets> ");
+                + "1. add meal <meal name> /cal <calories> /d <date> /t <time> - add a meal log" + NEW_LINE
+                + "2. bye - exit the program" + NEW_LINE
+                + "3. recommend <muscle_group>" + NEW_LINE
+                + "4. bmi /w <weight_in_kg> /h <height_in_m> - calculate your BMI" + NEW_LINE
+                + "5. add workout <date> /e <exercise> /r <reps> /s <sets> - add a workout log" + NEW_LINE
+                + "6. add water /ml <volume> /d <date> /t <time> - add a water log");
     }
 
     /**

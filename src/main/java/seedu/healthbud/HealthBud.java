@@ -1,6 +1,7 @@
 package seedu.healthbud;
 
 //import seedu.healthbud.storage.Storage;
+//import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Scanner;
 
@@ -15,6 +16,7 @@ public class HealthBud {
 
     public static void main(String[] args) {
 
+        assert false : "dummy assertion set to fail";
         Ui.printGreeting();
         //Storage.loadMeals(mealLogs);
         Scanner in = new Scanner(System.in);
