@@ -8,14 +8,15 @@ public class LogList {
 
     private List<Log> logs;
 
-
     public LogList(){
         logs = new ArrayList<>();
     }
 
+
     public Log getLog(int index){
         return logs.get(index);
     }
+
 
     public int getSize() {
         return logs.size();
@@ -25,7 +26,7 @@ public class LogList {
         return logs.isEmpty();
     }
 
-    public void addLog(Log log) {
+    public void addlog(Log log) {
         logs.add(log);
     }
 

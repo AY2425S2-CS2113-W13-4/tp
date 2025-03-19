@@ -8,7 +8,6 @@ import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.exception.InvalidRecommendException;
 import seedu.healthbud.exception.InvalidBMIException;
 import seedu.healthbud.exception.InvalidMealException;
-import seedu.healthbud.exception.InvalidWorkoutException;
 
 public class Parser {
 
@@ -40,7 +39,7 @@ public class Parser {
                 return true;
             }
         } catch (InvalidMealException | InvalidRecommendException
-                 | InvalidWorkoutException | InvalidBMIException | HealthBudException e) {
+                 | InvalidBMIException | HealthBudException e) {
             System.out.println(e.getMessage());
         }
         return true;
