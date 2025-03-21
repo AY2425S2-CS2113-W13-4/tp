@@ -2,16 +2,22 @@ package seedu.healthbud.log;
 
 public class Meal extends Log {
 
+    private String name;
     private String calories;
     private String time;
 
     public Meal(String name, String calories, String date, String time){
-        super(name, date);
+        super(date);
+        this.name = name;
         this.calories = calories;
         this.time = time;
     }
 
-    public String getCalories() {
+    public String getName() {
+        return name;
+    }
+
+    public String  getCalories() {
         return calories;
     }
 
@@ -21,6 +27,6 @@ public class Meal extends Log {
 
     @Override
     public String toString() {
-        return String.format("%s (%s cal) on: %s at: %s", getName(), calories, getDate(), time);
+        return String.format("%s (%s cal) on: %s at: %s", name, calories, getDate(), time);
     }
 }

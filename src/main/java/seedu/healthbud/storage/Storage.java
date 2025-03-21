@@ -2,6 +2,11 @@ package seedu.healthbud.storage;
 
 import seedu.healthbud.LogList;
 import seedu.healthbud.log.Meal;
+import seedu.healthbud.log.Test;
+import seedu.healthbud.log.Water;
+import seedu.healthbud.log.Log;
+import seedu.healthbud.log.PB;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,113 +14,122 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-/**
- * Handles the storage operations for meal logs including reading from and writing to the file.
- */
 public class Storage {
 
-    /** Directory where meal data is stored. */
     public static final String DATA_DIRECTORY = "data";
-
-    /** Filename for the meal storage file. */
     public static final String DATA_FILE = "HealthBud.txt";
-
-    /** The complete path to the meal storage file. */
     public static final Path DATA_PATH = Paths.get(DATA_DIRECTORY, DATA_FILE);
 
     /**
-     * Loads meals from the storage file into the provided LogList.
-     * <p>
+     * Loads logs from the storage file into the provided LogLists.
      * If the file or directory does not exist, they are created.
-     * </p>
      *
-     * @param mealLogs the LogList to load meals into
+     * @param mealLogs the LogList to load meal logs into
+     * @param workoutLogs the LogList to load workout logs into
+     * @param waterLogs the LogList to load water logs into
      */
-    public static void loadMeals(LogList mealLogs) {
+    public static void loadLogs(LogList mealLogs, LogList workoutLogs, LogList waterLogs, LogList pbLogs) {
         try {
             Files.createDirectories(Paths.get(DATA_DIRECTORY));
 
             if (!Files.exists(DATA_PATH)) {
                 Files.createFile(DATA_PATH);
-                System.out.println("Created new text file in data/HealthBud.txt");
+                System.out.println("Created new text file in " +
+                        DATA_PATH.toString().replace("\\", "/"));
                 return;
             }
 
             List<String> lines = Files.readAllLines(DATA_PATH);
             for (String line : lines) {
                 try {
-                    Meal meal = parseStringToMeal(line);
-                    mealLogs.addLog(meal);
+                    Log log = parseStringToLog(line);
+                    // Distribute log based on its type
+                    if (log instanceof Meal) {
+                        mealLogs.addLog(log);
+                    } else if (log instanceof Test) {
+                        workoutLogs.addLog(log);
+                    } else if (log instanceof Water) {
+                        waterLogs.addLog(log);
+                    } else if (log instanceof PB){
+                        pbLogs.addLog(log);
+                    }
                 } catch (IllegalArgumentException e) {
-                    System.out.println("Warning: Ignoring invalid meal in file: " + line);
+                    System.out.println("Warning: Ignoring invalid log in file: " + line);
                 }
             }
         } catch (IOException e) {
-            System.out.println("Warning: Error loading meals from file. Starting with empty list.");
+            System.out.println("Warning: Error loading logs from file. Starting with empty lists.");
         }
     }
 
-    /**
-     * Parses a line from the storage file into a Meal object.
-     * Expected format: M | mealName | calories | date | time
-     *
-     * @param line the line representing a meal
-     * @return a Meal object corresponding to the line
-     * @throws IllegalArgumentException if the meal format is invalid
-     */
-    public static Meal parseStringToMeal(String line) {
+    public static Log parseStringToLog(String line) {
         String[] parts = line.split(" \\| ");
-        if (parts.length != 5) {
-            throw new IllegalArgumentException("Invalid meal format");
+        if (parts.length < 2) {
+            throw new IllegalArgumentException("Invalid log format");
         }
-        if (!"M".equals(parts[0])) {
-            throw new IllegalArgumentException("Invalid meal type");
-        }
-        String name = parts[1];
-        String calories = parts[2];
-        String date = parts[3];
-        String time = parts[4];
+        String type = parts[0];
 
-        return new Meal(name, calories, date, time);
+        switch (type) {
+        case "M":
+            if (parts.length != 5) {
+                throw new IllegalArgumentException("Invalid meal format");
+            }
+            return new Meal(parts[1], parts[2], parts[3], parts[4]);
+        case "WO":
+            if (parts.length != 5) {
+                throw new IllegalArgumentException("Invalid workout format");
+            }
+            return new Test(parts[1], parts[2], parts[3], parts[4]);
+        case "WA":
+            if (parts.length != 4) {
+                throw new IllegalArgumentException("Invalid water format");
+            }
+            return new Water(parts[1], parts[2], parts[3]);
+        case "P":
+            if (parts.length != 4) {
+                throw new IllegalArgumentException("Invalid pb format");
+            }
+            return new PB(parts[1], parts[2], parts[3]);
+        default:
+            throw new IllegalArgumentException("Unknown log type: " + type);
+        }
     }
 
-    /**
-     * Appends the given meal to the storage file.
-     *
-     * @param meal the Meal to append to the file
-     */
-    public static void appendMealToFile(Meal meal) {
+    public static void appendLogToFile(Log log) {
         try (FileWriter fw = new FileWriter(DATA_PATH.toString(), true)) {
-            fw.write(parseMealToString(meal) + System.lineSeparator());
+            fw.write(parseLogToString(log) + System.lineSeparator());
         } catch (IOException e) {
-            System.out.println("Error appending meal to file: " + e.getMessage());
+            System.out.println("Error appending log to file: " + e.getMessage());
         }
     }
 
-    /**
-     * Rewrites all meals in the LogList to the storage file.
-     *
-     * @param mealLogs the LogList containing all meals to write
-     */
-    public static void rewriteMealsToFile(LogList mealLogs) {
+    public static void rewriteLogsToFile(LogList logs) {
         try (FileWriter fw = new FileWriter(DATA_PATH.toString())) {
-            for (int i = 0; i < mealLogs.getSize(); i++) {
-                // We know that the LogList stores meals as Log objects, so we need to cast them
-                fw.write(parseMealToString((Meal) mealLogs.getLog(i)) + System.lineSeparator());
+            for (int i = 0; i < logs.getSize(); i++) {
+                fw.write(parseLogToString(logs.getLog(i)) + System.lineSeparator());
             }
         } catch (IOException e) {
-            System.out.println("Error rewriting meals to file: " + e.getMessage());
+            System.out.println("Error rewriting logs to file: " + e.getMessage());
         }
     }
 
-    /**
-     * Converts a Meal object into its string representation for storage.
-     *
-     * @param meal the Meal to convert
-     * @return the string representation of the meal
-     */
-    public static String parseMealToString(Meal meal) {
-        return "M | " + meal.getName() + " | " + meal.getCalories() + " | "
-                + meal.getDate() + " | " + meal.getTime();
+    public static String parseLogToString(Log log) {
+        if (log instanceof Meal) {
+            Meal meal = (Meal) log;
+            return "M | " + meal.getName() + " | " + meal.getCalories()
+                    + " | " + meal.getDate() + " | " + meal.getTime();
+        } else if (log instanceof Test) {
+            Test workout = (Test) log;
+            return "WO | " + workout.getName() + " | " + workout.getDate()
+                    + " | " + workout.getReps() + " | " + workout.getSets();
+        } else if (log instanceof Water) {
+            Water water = (Water) log;
+            return "WA | " + water.getAmount() + " | " + water.getDate() + " | " + water.getTime();
+        } else if (log instanceof PB) {
+            PB pb = (PB) log;
+            return "P | " + pb.getExercise() + " | " + pb.getWeight() + " | " + pb.getDate();
+        }else {
+            throw new IllegalArgumentException("Unknown log type");
+        }
     }
 }

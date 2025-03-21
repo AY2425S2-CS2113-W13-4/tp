@@ -11,6 +11,8 @@ public class BMICommand extends Command{
 
     // Constructor
     public BMICommand(String input) throws HealthBudException, InvalidBMIException {
+        assert input != null && !input.trim().isEmpty() : "Input must be provided for BMI command";
+
         if (!input.contains("/h") || !input.contains("/w")) {
             throw new InvalidBMIException();
         }
@@ -32,7 +34,7 @@ public class BMICommand extends Command{
     }
 
     @Override
-    public void execute(LogList logList, LogList workoutLogs, LogList waterLogs, String input){
+    public void execute(LogList pbLogs, LogList mealLogs, LogList workoutLogs, LogList waterLogs, String input){
         double bmi = weight / (height * height);
         Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi));
     }
