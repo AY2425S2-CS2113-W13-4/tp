@@ -7,8 +7,11 @@ import seedu.healthbud.exception.InvalidDeleteException;
 public class DeleteCommand extends Command {
 
     @Override
-    public void execute(LogList pbLogs, LogList mealLogs, LogList workoutLogs, LogList waterLogs, String input)
+    public void execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+                        LogList waterLogs, LogList cardioLogs, String input)
             throws InvalidDeleteException, HealthBudException {
+
+        assert input != null && !input.trim().isEmpty() : "Input must be provided for Delete command";
 
         String[] parts = input.split(" ");
         if (parts.length < 3) {

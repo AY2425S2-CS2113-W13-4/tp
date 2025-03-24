@@ -7,8 +7,12 @@ public class FindCommand extends Command {
 
 
     @Override
-    public void execute(LogList pbLogs, LogList mealLogs, LogList workoutLogs, LogList waterLogs, String input)
+
+    public void execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+                        LogList waterLogs, LogList cardioLogs, String input)
             throws InvalidFindException {
+
+        assert input != null && !input.trim().isEmpty() : "Input must be provided for Find command";
 
         String[] parts = input.trim().split(" ");
         if (parts.length < 3) {

@@ -8,7 +8,8 @@ import seedu.healthbud.exception.InvalidSumException;
 public class SumCommand extends Command {
 
     @Override
-    public void execute(LogList pbLogs, LogList mealLogs, LogList workoutLogs, LogList waterLogs, String input)
+    public void execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+                        LogList waterLogs, LogList cardioLogs, String input)
             throws InvalidSumException {
 
         String[] parts = input.trim().split(" ");

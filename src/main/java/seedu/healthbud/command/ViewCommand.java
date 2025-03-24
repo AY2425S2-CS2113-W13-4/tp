@@ -7,10 +7,8 @@ import seedu.healthbud.exception.InvalidViewException;
 public class ViewCommand extends Command {
 
     @Override
-    public void execute(
-            LogList pbLogs, LogList mealLogs, LogList workoutLogs,
-            LogList waterLogs, String input
-    ) throws InvalidViewException {
+    public void execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+            LogList waterLogs, LogList cardioLogs, String input) throws InvalidViewException {
         assert input != null && !input.trim().isEmpty() : "Input should not be null or empty for view command";
 
         String[] parts = input.trim().split(" ");

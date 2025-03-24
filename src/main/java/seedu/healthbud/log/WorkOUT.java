@@ -1,12 +1,12 @@
 package seedu.healthbud.log;
 
-public class Test extends Log {
+public class WorkOUT extends Log {
 
     private String name;
     private String reps;
     private String sets;
 
-    public Test(String name, String reps, String sets, String date) {
+    public WorkOUT(String name, String reps, String sets, String date) {
         super(date);
         this.name = name;
         this.reps = reps;

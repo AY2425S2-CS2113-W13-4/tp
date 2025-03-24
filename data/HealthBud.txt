@@ -1,5 +1,0 @@
-WA | 500 | 12-01-25 | 9pm
-WA | 500000 | 12-01-25 | 9pm
-WA | 125000 | 12-01-25 | 9pm
-WO | <exercise> | <date> | <reps> | <sets>
-WO | <exercise> | 12-02-25 | <reps> | <sets>

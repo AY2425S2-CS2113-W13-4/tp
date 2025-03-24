@@ -103,4 +103,7 @@ Example of usage: `clear meal`
 * 8. `pb /e <exercise> /w <weight_in_kg> /d <date>` - Record a personal best
 * 9. `sum <cal|vol> /d <date>` - Sum up the total calories/water for the day
 * 10. `clear <pb|meal|workout|water>` - Clear the respective log
+* 11. `view <date>` - view logs for that date + NEW_LINE
+* 12. `add cardio <exercise> /s <speed> /i <incline> /t <duration> /d <date>` - Add a cardio log
+* 13. `add goals` (keane needs to edit this);
 
