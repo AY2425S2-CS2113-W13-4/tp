@@ -25,12 +25,14 @@ import seedu.healthbud.exception.InvalidPBException;
 import seedu.healthbud.exception.InvalidRecommendException;
 import seedu.healthbud.exception.InvalidWaterException;
 import seedu.healthbud.exception.InvalidWorkoutException;
+import seedu.healthbud.exception.InvalidDateFormatException;
 
 import seedu.healthbud.log.Meal;
 import seedu.healthbud.log.Cardio;
 import seedu.healthbud.log.PB;
 import seedu.healthbud.log.Water;
 import seedu.healthbud.log.WorkOUT;
+
 
 
 import java.io.ByteArrayOutputStream;
@@ -196,7 +198,7 @@ class JUnitTest {
         LogList pbLogs = new LogList();
         LogList waterLogs = new LogList();
         LogList cardioLogs = new LogList();
-        String input = "add pb /e bench /w 100 /d 12-01-25";
+        String input = "add pb bench /w 100 /d 12-01-25";
 
         new AddLogCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input);
 
@@ -352,7 +354,7 @@ class JUnitTest {
         String findInput = "find water 12-01-25";
         new FindCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, findInput);
 
-        String expected = "1. 500 ml on (12-01-25) at 8am";
+        String expected = "1. 2.0 glass of water on (12-01-25) at 8am";
         assertTrue(output.toString().contains(expected));
     }
 
@@ -590,4 +592,32 @@ class JUnitTest {
             new FindCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, findInput);
         });
     }
+
+    // ========================= formatDate function Tests =========================
+    @Test
+    public void formatDate_validDates_expectSuccess() throws InvalidDateFormatException {
+        assertEquals("Dec 25 2023", DateParser.formatDate("2023-12-25"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("12/25/2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("25/12/2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("Dec 25, 2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("December 25, 2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("20231225"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("25-12-2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("Mon, Dec 25, 2023"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("2023/12/25"));
+        assertEquals("Dec 25 2023", DateParser.formatDate("12-25-2023"));
+    }
+
+    @Test
+    public void formatDate_invalidDates_expectThrowsException() {
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate("2023-13-25")); // Invalid month
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate("32/12/2023")); // Invalid day
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate("random text")); // Random string
+        assertThrows(InvalidDateFormatException.class,
+                () -> DateParser.formatDate("2023-02-30")); // Invalid day in month
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate(null)); // Null input
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate("")); // Empty string
+    }
+
+
 }

@@ -5,7 +5,7 @@ import seedu.healthbud.Ui;
 import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.exception.InvalidBMIException;
 
-public class BMICommand extends Command{
+public class BMICommand extends Command {
     private double weight; // in kilograms
     private double height; // in meters
 
@@ -22,10 +22,10 @@ public class BMICommand extends Command{
         parts[1] = parts[1].substring(1).trim();
         parts[2] = parts[2].substring(1).trim();
 
-        try{
+        try {
             this.weight = Double.parseDouble(parts[1]);
             this.height = Double.parseDouble(parts[2]);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new HealthBudException("Invalid number format for weight or height.");
         }
 
@@ -37,9 +37,17 @@ public class BMICommand extends Command{
     @Override
 
     public void execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
-                        LogList waterLogs, LogList cardioLogs, String input){
+                        LogList waterLogs, LogList cardioLogs, String input) {
 
         double bmi = weight / (height * height);
-        Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi));
+        if (bmi < 18.5) {
+            Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi) + ", you are underweight.");
+        } else if (bmi < 25) {
+            Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi) + ", you are of normal weight.");
+        } else if (bmi < 30) {
+            Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi) + ", you are overweight.");
+        } else {
+            Ui.printMessage("Your BMI is: " + String.format("%.2f", bmi) + ", you are obese.");
+        }
     }
 }

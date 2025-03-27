@@ -1,0 +1,51 @@
+@startuml
+'--|> indicates inheritance
+'--> indicates association (navigability)
+'..> indicates dependency
+
+abstract class Command {
+    +execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+             LogList waterLogs, LogList cardioLogs, String input): void
+}
+
+class FindCommand {
+    +execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
+             LogList waterLogs, LogList cardioLogs, String input): void
+}
+
+Command <|-- FindCommand
+
+class Parser {
+    +handleInput(...): boolean
+}
+
+Parser "1" --> "0..1" FindCommand : creates
+
+class LogList {
+    -logs: List<Log>
+    +findLog(keyword: String): void
+    +getLog(index: int): Log
+    +getSize(): int
+    +isEmpty(): boolean
+    +addLog(log: Log): void
+    +loadLog(log: Log): void
+    +deleteLog(index: int): void
+    +listLogs(): void
+    +clearLogs(): void
+    +getAllDates(): void
+    +getCaloriesSum(date: String): int
+    +getCardioSum(date: String): int
+    +getWaterSum(date: String): void
+}
+
+class InvalidFindException {
+    +InvalidFindException()
+}
+
+InvalidFindException --|> Exception
+
+' Dependencies
+FindCommand ..> LogList
+FindCommand ..> InvalidFindException
+
+@enduml

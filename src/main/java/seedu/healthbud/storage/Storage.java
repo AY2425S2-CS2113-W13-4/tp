@@ -48,17 +48,17 @@ public class Storage {
                     Log log = parseStringToLog(line);
                     // Distribute log based on its type
                     if (log instanceof Meal) {
-                        mealLogs.addLog(log);
+                        mealLogs.loadLog(log);
                     } else if (log instanceof WorkOUT) {
-                        workoutLogs.addLog(log);
+                        workoutLogs.loadLog(log);
                     } else if (log instanceof Water) {
-                        waterLogs.addLog(log);
+                        waterLogs.loadLog(log);
                     } else if (log instanceof PB){
-                        pbLogs.addLog(log);
+                        pbLogs.loadLog(log);
                     } else if (log instanceof Cardio){
-                        cardioLogs.addLog(log);
+                        cardioLogs.loadLog(log);
                     } else if (log instanceof Goals){
-                        goalLogs.addLog(log);
+                        goalLogs.loadLog(log);
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("Warning: Ignoring invalid log in file: " + line);

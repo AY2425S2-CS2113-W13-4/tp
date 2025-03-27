@@ -7,7 +7,7 @@ public class Meal extends Log {
     private String time;
 
     public Meal(String name, String calories, String date, String time){
-        super(date);
+        super(date, "meal");
         this.name = name;
         this.calories = calories;
         this.time = time;

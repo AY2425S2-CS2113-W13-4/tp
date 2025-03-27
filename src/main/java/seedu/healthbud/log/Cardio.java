@@ -7,8 +7,8 @@ public class Cardio extends Log{
     private String incline;
     private String speed;
 
-    public Cardio(String name, String duration, String incline, String speed, String date) {
-        super(date);
+    public Cardio(String name, String speed, String incline, String duration, String date) {
+        super(date, "cardio");
         this.name = name;
         this.duration = duration;
         this.incline = incline;
@@ -33,7 +33,8 @@ public class Cardio extends Log{
 
     @Override
     public String toString() {
-        return name  + " (" + speed + " speed " + incline + " incline " + duration + " long) on " + getDate();
+        return name  + " (speed: " + speed + ", incline: " + incline + ", duration: " + duration + " mins) on " +
+                getDate();
 
     }
 

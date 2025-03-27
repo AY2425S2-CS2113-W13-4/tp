@@ -1,8 +1,11 @@
 package seedu.healthbud;
 
 import seedu.healthbud.exception.HealthBudException;
+import seedu.healthbud.log.Cardio;
 import seedu.healthbud.log.Log;
 import seedu.healthbud.log.Meal;
+import seedu.healthbud.log.Water;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,14 @@ public class LogList {
     }
 
     public void addlog(Log log) {
+        logs.add(log);
+        Ui.printMessage(" Got it. I've added this %s log:" + log.getLogType());
+        Ui.printMessage("  " + getLog(getSize() - 1));
+        Storage.appendLogToFile(log);
+        Ui.printMessage(String.format(" Now you have %d %s logs in the list.", getSize(), log.getLogType()));
+    }
+
+    public void loadLog(Log log) {
         logs.add(log);
     }
 
@@ -81,7 +92,21 @@ public class LogList {
         Ui.printMessage("Noted. I've removed all logs.");
     }
 
-    public void getCaloriesSum(String date) {
+    public void getAllDates(){
+        List<String> dates = new ArrayList<>();
+        for (int i = 0; i < logs.size(); i++) {
+            String date = logs.get(i).getDate();
+            if (!dates.contains(date)) {
+                dates.add(date);
+            }
+        }
+        Ui.printMessage("Here are the dates available:");
+        for (int i = 0; i < dates.size(); i++) {
+            Ui.printMessage((i + 1) + ". " + dates.get(i));
+        }
+    }
+
+    public int getCaloriesSum(String date) {
         int totalCalories = 0;
         for (int i = 0; i < logs.size(); i++) {
             Meal meal = (Meal) logs.get(i);
@@ -90,6 +115,36 @@ public class LogList {
             }
         }
         Ui.printMessage("Total calories consumed: " + totalCalories);
+        return totalCalories;
+    }
+
+    public int getCardioSum(String date){
+        int totalCardio = 0;
+        for (int i = 0; i < logs.size(); i++) {
+            Cardio cardio = (Cardio) logs.get(i);
+            if(cardio.getDate().equals(date)){
+                int speed = Integer.parseInt(cardio.getSpeed());
+                int duration = Integer.parseInt(cardio.getDuration());
+                int incline = Integer.parseInt(cardio.getIncline());
+
+                // general formula that i got from chat idk it might be anyhow de - kin
+                // Calories = (Speed * 2) + (Incline * 5) * (Duration / 60.0) * 100
+                totalCardio += (int) (((speed * 2) + (incline * 5)) * (duration / 60.0) * 100);
+            }
+        }
+        Ui.printMessage("Total calories burned: " + totalCardio);
+        return totalCardio;
+    }
+
+    public void getWaterSum(String date) {
+        int totalWater = 0;
+        for (int i = 0; i < logs.size(); i++) {
+            Water water = (Water) logs.get(i);
+            if (logs.get(i).getDate().equals(date)) {
+                totalWater += Integer.parseInt(water.getAmount());
+            }
+        }
+        Ui.printMessage("Total water consumed: " + totalWater + "ml");
     }
 }
 
