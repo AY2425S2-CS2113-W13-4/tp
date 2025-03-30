@@ -83,10 +83,10 @@ public class Storage {
             }
             return new Meal(parts[1], parts[2], parts[3], parts[4]);
         case "WO":
-            if (parts.length != 5) {
+            if (parts.length != 6) {
                 throw new IllegalArgumentException("Invalid workout format");
             }
-            return new WorkOUT(parts[1], parts[2], parts[3], parts[4]);
+            return new WorkOUT(parts[1], parts[2], parts[3], parts[4], parts[5]);
         case "WA":
             if (parts.length != 4) {
                 throw new IllegalArgumentException("Invalid water format");
@@ -141,8 +141,9 @@ public class Storage {
                     + " | " + meal.getDate() + " | " + meal.getTime();
         } else if (log instanceof WorkOUT) {
             WorkOUT workout = (WorkOUT) log;
-            return "WO | " + workout.getName() + " | " + workout.getDate()
-                    + " | " + workout.getReps() + " | " + workout.getSets();
+            return "WO | " + workout.getName() + " | " + workout.getReps()
+                    + " | " + workout.getSets() + " | " + workout.getDate()
+                    + " | " + workout.getWeight();
         } else if (log instanceof Water) {
             Water water = (Water) log;
             return "WA | " + water.getAmount() + " | " + water.getDate() + " | " + water.getTime();

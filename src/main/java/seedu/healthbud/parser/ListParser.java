@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.OneLogAndInput.ListCommand;
+import seedu.healthbud.command.onelogandinput.ListCommand;
 import seedu.healthbud.exception.InvalidListException;
 
 public class ListParser {

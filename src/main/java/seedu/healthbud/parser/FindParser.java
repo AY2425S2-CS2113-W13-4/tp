@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.OneLogAndInput.FindCommand;
+import seedu.healthbud.command.onelogandinput.FindCommand;
 import seedu.healthbud.exception.InvalidFindException;
 
 public class FindParser {

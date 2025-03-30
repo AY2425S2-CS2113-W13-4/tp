@@ -1,9 +1,9 @@
-package seedu.healthbud.command.AllLogsAndInput;
+package seedu.healthbud.command.alllogsandinput;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.CommandInterface.Command;
+import seedu.healthbud.command.commandinterface.Command;
 
-// FOR COMMANDS THAT NEEDS MORE THJAN 1 LOG LIST AND INPUT
+// FOR COMMANDS THAT NEEDS MORE THAN 1 LOG LIST AND INPUT
 
 public abstract class AllLogsCommand implements Command {
     protected LogList goalLogs;

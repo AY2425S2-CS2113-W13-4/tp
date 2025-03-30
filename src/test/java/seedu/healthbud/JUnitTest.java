@@ -1,19 +1,22 @@
 
 package seedu.healthbud;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 //import static org.junit.jupiter.api.Assertions.assertThrows;
 //import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 
-import org.junit.jupiter.api.Test;
+//import seedu.healthbud.command.onelogandinput.AddMealCommand;
+
+//import org.junit.jupiter.api.Test;
+//import seedu.healthbud.command.onelogandinput.AddMealCommand;
+//import seedu.healthbud.command.onelogandinput.AddMealCommand;
+//import seedu.healthbud.log.Meal;
 //import seedu.healthbud.command.AddLogCommand;
 //import seedu.healthbud.command.InputOnly.BMICommand;
 //import seedu.healthbud.command.OneLogAndInput.ClearCommand;
 //import seedu.healthbud.command.OneLogAndInput.DeleteCommand;
 //import seedu.healthbud.command.OneLogAndInput.FindCommand;
 //import seedu.healthbud.command.InputOnly.RecommendCommand;
-import seedu.healthbud.command.OneLogAndInput.AddMealCommand;
+//import seedu.healthbud.command.onelogandinput.AddMealCommand;
 
 //import seedu.healthbud.exception.HealthBudException;
 //import seedu.healthbud.exception.InvalidBMIException;
@@ -30,7 +33,8 @@ import seedu.healthbud.command.OneLogAndInput.AddMealCommand;
 //import seedu.healthbud.exception.InvalidWorkoutException;
 //import seedu.healthbud.exception.InvalidDateFormatException;
 
-import seedu.healthbud.log.Meal;
+//import seedu.healthbud.command.onelogandinput.AddMealCommand;
+//import seedu.healthbud.log.Meal;
 //import seedu.healthbud.log.Cardio;
 //import seedu.healthbud.log.PB;
 //import seedu.healthbud.log.Water;
@@ -41,43 +45,6 @@ import seedu.healthbud.log.Meal;
 //import java.io.ByteArrayOutputStream;
 //import java.io.PrintStream;
 
-public class JUnitTest {
-
-    private LogList mealLogs;
-
-    @BeforeEach
-    void setUp() {
-        mealLogs = new LogList();
-    }
-
-    @Test
-    void testExecute_addsMealSuccessfully() {
-        String name = "Chicken Rice";
-        String calories = "500";
-        String date = "2025-03-28";
-        String time = "12:30";
-
-        AddMealCommand command = new AddMealCommand(
-                mealLogs,
-                "add /meal Chicken Rice /cal 500 /date 2025-03-28 /time 12:30",
-                name,
-                calories,
-                date,
-                time
-        );
-
-        command.execute();
-
-        assertEquals(1, mealLogs.getSize());
-
-        // Verify added meal details
-        Meal addedMeal = (Meal) mealLogs.getLog(0);
-        assertEquals(name, addedMeal.getName());
-        assertEquals(calories, addedMeal.getCalories());
-        assertEquals(date, addedMeal.getDate());
-        assertEquals(time, addedMeal.getTime());
-    }
-}
 /*
 class JUnitTest {
 

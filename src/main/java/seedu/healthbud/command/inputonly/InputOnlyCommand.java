@@ -1,6 +1,6 @@
-package seedu.healthbud.command.InputOnly;
+package seedu.healthbud.command.inputonly;
 
-import seedu.healthbud.command.CommandInterface.Command;
+import seedu.healthbud.command.commandinterface.Command;
 
 // FOR COMMANDS THAT OINLY NEED INPUT AND NO NEED LOGS AT ALL
 

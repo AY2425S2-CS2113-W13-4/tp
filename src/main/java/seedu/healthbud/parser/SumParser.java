@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.OneLogAndInput.SumCommand;
+import seedu.healthbud.command.onelogandinput.SumCommand;
 import seedu.healthbud.exception.InvalidSumException;
 
 public class SumParser {

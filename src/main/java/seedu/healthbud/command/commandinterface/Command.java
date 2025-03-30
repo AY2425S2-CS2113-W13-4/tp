@@ -1,4 +1,4 @@
-package seedu.healthbud.command.CommandInterface;
+package seedu.healthbud.command.commandinterface;
 
 public interface Command {
     void execute() throws Exception;

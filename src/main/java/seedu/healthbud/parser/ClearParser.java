@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.OneLogAndInput.ClearCommand;
+import seedu.healthbud.command.onelogandinput.ClearCommand;
 import seedu.healthbud.exception.InvalidClearException;
 
 public class ClearParser {

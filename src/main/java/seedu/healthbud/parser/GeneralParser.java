@@ -2,8 +2,9 @@ package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
 import seedu.healthbud.Ui;
-import seedu.healthbud.command.CommandInterface.Command;
+import seedu.healthbud.command.commandinterface.Command;
 import seedu.healthbud.exception.HealthBudException;
+import seedu.healthbud.parser.addcommandparser.AddParser;
 
 public class GeneralParser {
 
@@ -11,7 +12,7 @@ public class GeneralParser {
 
     public static boolean handleInput(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
                                       LogList waterLogs, LogList cardioLogs, String input) throws HealthBudException {
-        String[] parts = input.split(" ");
+        String[] parts = input.trim().split("\\s+");
 
         try {
             Command command;

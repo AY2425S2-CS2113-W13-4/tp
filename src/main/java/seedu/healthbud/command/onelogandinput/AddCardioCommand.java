@@ -1,4 +1,4 @@
-package seedu.healthbud.command.OneLogAndInput;
+package seedu.healthbud.command.onelogandinput;
 
 import seedu.healthbud.LogList;
 import seedu.healthbud.log.Cardio;

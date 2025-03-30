@@ -1,7 +1,7 @@
-package seedu.healthbud.command.OneLogAndInput;
+package seedu.healthbud.command.onelogandinput;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.CommandInterface.Command;
+import seedu.healthbud.command.commandinterface.Command;
 
 // FOR COMMANDS THAT ONLY NEED ONE LOG AT A TIME AND INPUT
 
