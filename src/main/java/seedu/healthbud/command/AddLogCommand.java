@@ -1,7 +1,9 @@
+/*
 package seedu.healthbud.command;
 
 import seedu.healthbud.LogList;
 import seedu.healthbud.Ui;
+import seedu.healthbud.command.CommandInterface.Command;
 import seedu.healthbud.exception.InvalidMLException;
 import seedu.healthbud.exception.InvalidLogException;
 import seedu.healthbud.exception.InvalidMealException;
@@ -17,10 +19,13 @@ import seedu.healthbud.log.WorkOUT;
 import seedu.healthbud.log.PB;
 import seedu.healthbud.log.Goals;
 import seedu.healthbud.log.Cardio;
-import seedu.healthbud.ParserParameters;
+import seedu.healthbud.parser.ParserParameters;
 
 import java.util.Map;
 import java.util.Scanner;
+
+
+// I THINK THIS ONE CAN KIND OF DELETE ALREDY - KIN
 
 public class AddLogCommand extends Command {
 
@@ -213,3 +218,4 @@ public class AddLogCommand extends Command {
     }
 
 }
+*/

@@ -1,4 +1,4 @@
-package seedu.healthbud;
+package seedu.healthbud.parser;
 
 import java.util.HashMap;
 import java.util.Map;

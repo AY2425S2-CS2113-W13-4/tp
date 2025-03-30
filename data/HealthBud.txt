@@ -1,0 +1,3 @@
+M | chicken | 550 | 170802 | 9pm
+M | Chicken Rice | 500 | 2025-03-28 | 12:30
+M | Chicken Rice | 500 | 2025-03-28 | 12:30

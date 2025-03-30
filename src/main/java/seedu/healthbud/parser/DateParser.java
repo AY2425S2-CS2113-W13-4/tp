@@ -1,4 +1,4 @@
-package seedu.healthbud;
+package seedu.healthbud.parser;
 
 import seedu.healthbud.exception.InvalidDateFormatException;
 

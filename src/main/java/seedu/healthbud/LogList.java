@@ -35,7 +35,7 @@ public class LogList {
 
     public void addlog(Log log) {
         logs.add(log);
-        Ui.printMessage(" Got it. I've added this %s log:" + log.getLogType());
+        Ui.printMessage(" Got it. I've added this log:" + log.getLogType());
         Ui.printMessage("  " + getLog(getSize() - 1));
         Storage.appendLogToFile(log);
         Ui.printMessage(String.format(" Now you have %d %s logs in the list.", getSize(), log.getLogType()));
@@ -60,7 +60,7 @@ public class LogList {
 
     public void listLogs() {
         if (logs.isEmpty()) {
-            Ui.printMessage(" No tasks available.");
+            Ui.printMessage(" No logs available.");
         } else {
             for (int i = 0; i < logs.size(); i++) {
                 Ui.printListedFormat(this, i);
@@ -78,7 +78,7 @@ public class LogList {
         }
 
         if (notFound) {
-            Ui.printMessage("No matching '" + keyword +  "' tasks found.");
+            Ui.printMessage("No matching '" + keyword +  "' logs found.");
         }
     }
 
