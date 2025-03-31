@@ -12,6 +12,7 @@ import seedu.healthbud.exception.InvalidDateFormatException;
 
 public class AddParser {
 
+    //@@author Ahmish15
     public static Command parse(String subCommand, LogList mealLogs, LogList waterLogs, LogList cardioLogs,
                                 LogList pbLogs, LogList workoutLogs, String input) throws InvalidLogException,
             InvalidCardioException, InvalidMealException, InvalidPBException, InvalidWaterException,

@@ -1,21 +1,4 @@
-C | treadmill | 90 | 12 | 9 | Dec 12 2012
-P | push up | 88 | Dec 21 2002
-WA | 900000000000 | Dec 12 0012 | 0900
-WA | 150 | Dec 12 2012 | 930pm
-WA | 150 | Dec 12 2012 | 930pm
-P | huh | 50000 | Sep 12 2012
-P | huh | 50000 | Sep 12 2012
-WO | pushup | Dec 12 2012 | 3 | 5 | 90
-WO | pushup | Dec 12 2012 | 3 | 5 | 90
-WO | pushup | Dec 12 2012 | 3 | 5 | 90
-WO | pushup | Dec 12 2012 | 3 | 5 | 90
-WO | pushup | Dec 12 2012 | 3 | 5 | 90
-WO | pushup | Dec 12 2012 | 90 | 2 | 500
-WO | handstand | Dec 12 2012 | 3 | 5 | 100
-WO | handstand | 100 | Dec 12 2012 | 3 | 5
-WO | handstand | 100 | Dec 12 2012 | 3 | 5
-WO | handstand | 3 | 5 | Dec 12 2012 | 100
-M | <meal_name> | 4 | Mar 04 0025 | 2200
-WA | 1999 | Feb 03 2025 | 1800
-WO | <exercise> | 1 | 3 | Mar 02 2025 | 150
-M | Chicken Rice | 500 | 2025-03-28 | 12:30
+WO | push | 3 | 5 | 12 Dec 2012 | 90
+C | treadmill | 90 | 5 | 5 | 12 Dec 2012
+WA | 500 | 12 Dec 2012 | 930pm
+M | chicken rice | 560 | 12 Dec 2012 | 930

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DateParser {
 
-    private static final String OUTPUT_FORMAT = "MMM dd yyyy";
+    private static final String OUTPUT_FORMAT = "dd MMM yyyy";
 
     // List of possible input date formats to try
     private static final List<String> INPUT_FORMATS = Arrays.asList(
@@ -23,7 +23,8 @@ public class DateParser {
             "dd-MM-yyyy",      // (e.g., 25-12-2023)
             "EEE, MMM dd, yyyy", // (e.g., Mon, Dec 25, 2023)
             "yyyy/MM/dd",      // (e.g., 2023/12/25)
-            "MM-dd-yyyy"       // (e.g., 12-25-2023)
+            "MM-dd-yyyy",      // (e.g., 12-25-2023)
+            "MMM dd yyyy"
     );
 
     public static String formatDate(String inputDate) throws InvalidDateFormatException {

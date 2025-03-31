@@ -3,6 +3,7 @@ package seedu.healthbud.command.onelogandinput;
 import seedu.healthbud.LogList;
 import seedu.healthbud.log.Cardio;
 
+//@@author Ahmish15
 public class AddCardioCommand extends OneLogCommand {
 
     private final String name;

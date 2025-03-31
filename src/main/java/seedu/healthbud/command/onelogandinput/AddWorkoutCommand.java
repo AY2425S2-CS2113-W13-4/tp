@@ -3,6 +3,8 @@ package seedu.healthbud.command.onelogandinput;
 import seedu.healthbud.LogList;
 import seedu.healthbud.log.WorkOUT;
 
+
+//@@ author Ahmish15
 public class AddWorkoutCommand extends OneLogCommand {
 
     private final String name;

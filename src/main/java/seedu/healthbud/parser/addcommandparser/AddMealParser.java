@@ -9,8 +9,10 @@ import seedu.healthbud.parser.ParserParameters;
 
 import java.util.Map;
 
+
 public class AddMealParser {
 
+    //@@author Ahmish15
     public static AddMealCommand parse(LogList mealLogs, String input)
             throws InvalidMealException, InvalidDateFormatException {
 
