@@ -1,4 +1,0 @@
-WO | push | 3 | 5 | 12 Dec 2012 | 90
-C | treadmill | 90 | 5 | 5 | 12 Dec 2012
-WA | 500 | 12 Dec 2012 | 930pm
-M | chicken rice | 560 | 12 Dec 2012 | 930

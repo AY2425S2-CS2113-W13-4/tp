@@ -19,11 +19,9 @@ public class LogList {
         logs = new ArrayList<>();
     }
 
-
     public Log getLog(int index){
         return logs.get(index);
     }
-
 
     public int getSize() {
         return logs.size();
@@ -33,7 +31,13 @@ public class LogList {
         return logs.isEmpty();
     }
 
-    public void addlog(Log log) {
+    public void updateLog(Log log){
+        Ui.printMessage(" Got it this Log has been updated:");
+        Ui.printMessage("  " + log.toString());
+        Storage.appendLogToFile(log);
+    }
+
+    public void addLog(Log log) {
         logs.add(log);
         Ui.printMessage(" Got it. I've added this log:" + log.getLogType());
         Ui.printMessage("  " + getLog(getSize() - 1));
@@ -147,4 +151,3 @@ public class LogList {
         Ui.printMessage("Total water consumed: " + totalWater + "ml");
     }
 }
-

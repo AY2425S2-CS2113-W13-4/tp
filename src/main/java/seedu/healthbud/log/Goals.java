@@ -19,11 +19,16 @@ public class Goals extends Log {
 
     public static Goals getInstance() {
         if (instance == null) {
-            instance = new Goals(null, null, null, null, null);
+            instance = new Goals("0", "0", "0", "0", "0");
         }
         return instance;
     }
 
+    public void updateGoals(String water, String calorie, String weight){
+        this.dailyWaterGoal = water;
+        this.dailyCalorieGoal = calorie;
+        this.weightGoal = weight;
+    }
 
     public void setDailyWaterGoal(String dailyWaterGoal) {
         this.dailyWaterGoal = dailyWaterGoal;
@@ -59,10 +64,24 @@ public class Goals extends Log {
 
 
     public String toString() {
-        return String.format("    Daily Water Goal: %s ml\n"
-                + "    Daily Calorie Goal: %s cal\n"
-                + "    Weight Goal: %s kg \n"
-                + "    Weekly Weight Progress: %s kg\n"
-                , dailyWaterGoal, dailyCalorieGoal, weightGoal, weeklyWeightProgress);
+        Goals goal = Goals.getInstance();
+        String finalString;
+        if (goal.getDailyWaterGoal().equals("0")) {
+            finalString = "    Daily Water Goal: Not set yet\n";
+        } else {
+            finalString = "    Daily Water Goal: " + goal.getDailyWaterGoal() + " ml\n";
+        }
+
+        if (goal.getDailyCalorieGoal().equals("0")) {
+            finalString += "    Daily Calorie Goal: Not set yet\n";
+        } else {
+            finalString += "    Daily Calorie Goal: " + goal.getDailyCalorieGoal() + " cal\n";
+        }
+        if (goal.getWeightGoal().equals("0")) {
+            finalString += "    Weight Goal: Not set yet\n";
+        } else {
+            finalString += "    Weight Goal: " + goal.getWeightGoal() + " kg\n";
+        }
+        return finalString;
     }
 }

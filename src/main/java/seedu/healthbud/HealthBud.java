@@ -15,8 +15,9 @@ public class HealthBud {
     public static LogList workoutLogs = new LogList();
     public static LogList waterLogs = new LogList();
     public static LogList pbLogs = new LogList();
-    public static LogList goalLogs = new LogList();
     public static LogList cardioLogs = new LogList();
+    public static LogList goalLogs = new LogList();
+
 
     public static void main(String[] args) throws HealthBudException {
         Ui.printGreeting();

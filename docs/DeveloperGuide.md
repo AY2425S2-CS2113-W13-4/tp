@@ -238,7 +238,7 @@ GUI/Web Interface: Build a frontend to visualize progress and make goal-setting 
 ### Value proposition
 
 HealthBud provides a simple and effective CLI solution to track health logs including workouts, meals, water intake, 
-and personal bests. Unlike complex mobile apps, it runs offline and keeps data lightweight and easily exportable.
+and personal bests. Unlike complex mobile apps, it runs offline and keeps the data lightweight and easily exportable.
 
 ## User Stories
 

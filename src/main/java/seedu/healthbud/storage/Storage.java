@@ -107,8 +107,8 @@ public class Storage {
                 throw new IllegalArgumentException("Invalid goal format");
             }
             Goals goals = Goals.getInstance();
-            goals.setDailyCalorieGoal(parts[1]);
-            goals.setDailyWaterGoal(parts[2]);
+            goals.setDailyWaterGoal(parts[1]);
+            goals.setDailyCalorieGoal(parts[2]);
             goals.setWeightGoal(parts[3]);
             return goals;
         default:
@@ -156,7 +156,7 @@ public class Storage {
                     " | " + cardio.getSpeed() + " | " + cardio.getDate();
         } else if (log instanceof Goals) {
             Goals goals = (Goals) log;
-            return "C | " + goals.getDailyWaterGoal() + " | " + goals.getDailyCalorieGoal()
+            return "G | " + goals.getDailyWaterGoal() + " | " + goals.getDailyCalorieGoal()
                     + " | " + goals.getWeightGoal();
         }else {
             throw new IllegalArgumentException("Unknown log type");
