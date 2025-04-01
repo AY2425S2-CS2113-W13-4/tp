@@ -36,9 +36,6 @@ public class GeneralParser {
             case "bmi":
                 command = BMIParser.parse(input);
                 break;
-            case "find":
-                command = FindParser.parse(input, mealLogs, workoutLogs, waterLogs, pbLogs, cardioLogs);
-                break;
             case "delete":
                 command = DeleteParser.parse(input, mealLogs, workoutLogs, waterLogs, pbLogs, cardioLogs);
                 break;
@@ -48,11 +45,11 @@ public class GeneralParser {
             case "sum":
                 command = SumParser.parse(input, mealLogs, waterLogs, cardioLogs);
                 break;
-            case "view":
-                command = ViewParser.parse(input, goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs);
-                break;
             case "status":
                 command = StatusParser.parse(input, goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs);
+                break;
+            case "search":
+                command = SearchParser.parse(input, mealLogs, workoutLogs, waterLogs, pbLogs, cardioLogs, goalLogs);
                 break;
             default:
                 Ui.printUnknownCommand();
@@ -60,9 +57,7 @@ public class GeneralParser {
             }
             command.execute();
             return true;
-        } // dn put alll the different type of exceptions cause they are all subclasses of Exception, so if put
-        // Exception it handles everything le - Kin
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return true;

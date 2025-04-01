@@ -59,14 +59,13 @@ public class Ui {
                 + "8. add pb <exercise> /w <weight_in_kg> /d <date> - Record a personal best" + NEW_LINE
                 + "9. sum <cal|vol> /d <date> - Sum up the total calories/water for the day" + NEW_LINE
                 + "10. clear <pb|meal|workout|water> - Clear the respective log" + NEW_LINE
-                + "11. view /m <logtype> /d <date>, at least one must be provided. OR " +
-                "view /m all" + NEW_LINE
-                + "12. add cardio <exercise> /s <speed> /i <incline> /t <duration> /d <date> - Add a cardio log"
+                + "11. add cardio <exercise> /s <speed> /i <incline> /t <duration> /d <date> - Add a cardio log"
                      + NEW_LINE
-                + "13. add goals - to enter goal setting mode" + NEW_LINE
+                + "12. add goals - to enter goal setting mode" + NEW_LINE
                 + "13.1  /w <waterGoals /c <calorieGoals> /m <weightGoals> - to edit personal goals" + NEW_LINE
                 + "14. status change <cutting/bulking> - Update your cutting/bulking status." + NEW_LINE
-                + "15. status report - View your current cutting/bulking progress" + NEW_LINE);
+                + "15. status report - View your current cutting/bulking progress" + NEW_LINE
+                + "16. search <logType> /d <date> OR search <logType> /k <keyword> - Search for logs" + NEW_LINE);
     }
 
     /**

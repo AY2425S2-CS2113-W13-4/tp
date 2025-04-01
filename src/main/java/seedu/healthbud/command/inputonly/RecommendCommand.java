@@ -11,6 +11,10 @@ public class RecommendCommand extends InputOnlyCommand {
         this.list = list;
     }
 
+    public String getMessage() {
+        return list;
+    }
+
     @Override
     public void execute() {
         Ui.printMessage(list);

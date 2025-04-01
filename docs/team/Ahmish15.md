@@ -4,22 +4,21 @@ A short overview of your product to provide some context to the reader. The open
 team members. If your product overview extends beyond 1-2 sentences, the remainder should be written by yourself.
 
 # Summary of Contributions
+Implemented all the Add commands and their respective parser classes. Also implemented the Search and BMI Command and their parser classes.
 ## Code contributed
-
-Give a link to your code on tP Code Dashboard. The link is available in the Project List Page -- linked to the  icon
-under your profile picture.
+https://github.com/Ahmish15/tp
 
 ## Enhancements implemented
 
-A summary of the enhancements you implemented.
+Split the AddLogsCommand into 5 different classes to make it more modular and easier to read. Added the SearchCommand and BMICommand classes to allow users to search for their logs and calculate their BMI respectively.
 
 ## Contributions to the UG
 
-Which sections did you contribute to the UG?
+added the following commands to the user guide: SearchCommand and BMICommand
 
 ## Contributions to the DG
 
-Which sections did you contribute to the DG? Which UML diagrams did you add/updated?
+BMI Class Diagram and Sequence Diagram.
 
 ## Contributions to team-based tasks
 

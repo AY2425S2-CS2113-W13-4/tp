@@ -20,4 +20,12 @@ public class DeleteCommand extends OneLogCommand {
 
         logList.deleteLog(index);
     }
+
+    public LogList getLogList() {
+        return logList;
+    }
+
+    public int getIndex() {
+        return index;
+    }
 }

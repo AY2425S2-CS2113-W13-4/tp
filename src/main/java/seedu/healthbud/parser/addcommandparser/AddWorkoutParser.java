@@ -51,7 +51,7 @@ public class AddWorkoutParser {
 
         // Validate numeric parameters
         if (!param.get("r").matches("\\d+") || !param.get("s").matches("\\d+") ||
-                !param.get("w").matches("\\d+")) {
+                !param.get("w").matches("\\d+(\\.\\d+)?")) {
             throw new InvalidWorkoutException();
         }
 

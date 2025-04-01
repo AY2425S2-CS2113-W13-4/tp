@@ -4,7 +4,7 @@ import seedu.healthbud.Ui;
 import seedu.healthbud.log.Goals;
 import seedu.healthbud.LogList;
 
-public class AddGoalCommand extends OneLogCommand{
+public class AddGoalCommand extends OneLogCommand {
 
     private static String waterGoal ;
     private static String calorieGoal;

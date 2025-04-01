@@ -1,0 +1,53 @@
+@startuml
+
+class AddWorkoutParser {
+    +parse(LogList, String): AddWorkoutCommand
+}
+
+class AddWorkoutCommand {
+    - String name
+    - String reps
+    - String sets
+    - String date
+    - String weight
+    + execute()
+}
+
+class WorkOUT {
+    - String name
+    - String reps
+    - String sets
+    - String date
+    - String weight
+}
+
+class LogList {
+    + addLog(Log)
+}
+
+class OneLogCommand {
+    # LogList logList
+    # String input
+}
+
+class ParserParameters{
+ + parseParameters(String input) : Map<String, String>
+}
+
+class DateParser{
+  -  String OUTPUT_FORMAT
+  - List<String> INPUT_FORMATS
+
+  + formatDate(String inputDate) : String
+}
+
+AddWorkoutParser --> AddWorkoutCommand
+AddWorkoutCommand --|> OneLogCommand
+AddWorkoutCommand --> WorkOUT
+AddWorkoutCommand --> LogList
+AddWorkoutParser ..> ParserParameters
+AddWorkoutParser ..> DateParser
+
+@enduml
+
+

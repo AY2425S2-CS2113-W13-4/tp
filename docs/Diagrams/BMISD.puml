@@ -1,0 +1,24 @@
+@startuml
+autonumber
+
+actor User
+participant Parser as "BMIParser"
+participant BMICommand
+participant ExceptionHandler as "HealthBudException\n/ InvalidBmiException"
+participant Console
+
+User -> Parser: handleInput("bmi 70 /h 1.75")
+Parser -> Parser: parse("bmi 70 /h 1.75")
+
+alt valid input
+    Parser -> BMICommand: new BMICommand(input, weight=70, height=1.75)
+    Parser -> BMICommand: execute()
+    activate BMICommand
+    BMICommand -> BMICommand: calculate BMI
+    BMICommand -> Console: print BMI classification
+    deactivate BMICommand
+else invalid input
+    Parser -> ExceptionHandler: throw exception
+end
+
+@enduml

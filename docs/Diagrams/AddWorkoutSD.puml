@@ -1,0 +1,62 @@
+@startuml
+actor User
+participant ":HealthBud" as HealthBud
+participant ":GeneralParser" as GeneralParser
+participant ":AddParser" as AddParser
+participant ":AddWorkoutParser" as AddWorkoutParser
+participant ":ParserParameters" as ParserParameters
+participant ":DateParser" as DateParser
+participant ":AddWorkoutCommand" as AddWorkoutCommand
+participant "workoutLogs:LogList" as LogList
+participant "new:WorkOUT" as WorkOUT
+
+User -> HealthBud : "add workout squats /r 10 /s 3 /d 25-12-2023 /w 50"
+activate HealthBud
+
+HealthBud -> GeneralParser : handleInput("add workout, ...")
+activate GeneralParser
+
+GeneralParser -> AddParser : parse("workout", workoutLogs, ...)
+activate AddParser
+
+AddParser -> AddWorkoutParser : parse(workoutLogs, input)
+activate AddWorkoutParser
+
+AddWorkoutParser -> ParserParameters : parseParameters(/r 10 /s 3 /d 2023-12-25 /w 50)
+activate ParserParameters
+ParserParameters --> AddWorkoutParser : params {r: "10", s: "3", d: "2023-12-25", w: "50"}
+deactivate ParserParameters
+
+AddWorkoutParser -> DateParser : formatDate("25-12-2023")
+activate DateParser
+DateParser --> AddWorkoutParser : "25 Dec 2023"
+deactivate DateParser
+
+AddWorkoutParser --> AddParser : AddWorkoutCommand
+deactivate AddWorkoutParser
+
+AddParser --> GeneralParser : AddWorkoutCommand
+deactivate AddParser
+
+GeneralParser -> AddWorkoutCommand : execute()
+activate AddWorkoutCommand
+
+AddWorkoutCommand -> WorkOUT : new("squats", "10", "3", "25 Dec 2023", "50")
+activate WorkOUT
+WorkOUT --> AddWorkoutCommand
+deactivate WorkOUT
+
+AddWorkoutCommand -> LogList : addLog(new WorkOUT)
+activate LogList
+LogList --> AddWorkoutCommand
+deactivate LogList
+
+AddWorkoutCommand --> GeneralParser
+deactivate AddWorkoutCommand
+
+GeneralParser --> HealthBud
+deactivate GeneralParser
+
+HealthBud --> User
+deactivate HealthBud
+@enduml

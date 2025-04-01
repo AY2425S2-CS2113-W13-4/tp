@@ -49,10 +49,9 @@ public class AddCardioParser {
             throw new InvalidCardioException();
         }
 
-        // Validate numeric parameters
-        if (!param.get("s").matches("\\d+") ||
-                !param.get("i").matches("\\d+") ||
-                !param.get("t").matches("\\d+")) {
+        if (!param.get("s").matches("\\d+(\\.\\d+)?") ||
+                !param.get("i").matches("\\d+(\\.\\d+)?") ||
+                !param.get("t").matches("\\d+(\\.\\d+)?")) {
             throw new InvalidCardioException();
         }
 

@@ -23,9 +23,30 @@ public class AddWorkoutCommand extends OneLogCommand {
         this.weight = weight;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getReps() {
+        return reps;
+    }
+
+    public String getSets() {
+        return sets;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
     @Override
     public void execute(){
         WorkOUT newWorkout = new WorkOUT(name, reps, sets, date, weight);
         logList.addLog(newWorkout);
     }
+
 }

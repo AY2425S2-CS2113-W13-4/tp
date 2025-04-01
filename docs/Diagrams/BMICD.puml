@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Command {
+    +execute() throws Exception
+}
+
+' An abstract class implementing the Command interface
+abstract class InputOnlyCommand {
+    -input: String
+    +InputOnlyCommand(String input)
+    +execute() : void
+}
+
+Command <|.. InputOnlyCommand
+
+' BMICommand extends the abstract InputOnlyCommand
+class BMICommand {
+    -weight: double
+    -height: double
+    +BMICommand(String input, double weight, double height)
+    +execute() : void
+}
+
+InputOnlyCommand <|-- BMICommand
+
+' BMIParser responsible for creating BMICommand objects
+class BMIParser {
+    +parse(String input) : BMICommand throws HealthBudException, InvalidBmiException
+}
+
+' Custom exceptions
+class InvalidBmiException {
+    +InvalidBmiException()
+}
+
+class HealthBudException {
+    +HealthBudException()
+}
+
+' Both exceptions extend the standard Exception class
+InvalidBmiException --|> Exception
+HealthBudException --|> Exception
+
+' Parser creates BMICommand
+BMIParser --> BMICommand : creates
+
+' BMICommand may throw or be associated with these exceptions
+BMICommand ..> InvalidBmiException
+BMICommand ..> HealthBudException
+
+@enduml

@@ -150,4 +150,5 @@ public class LogList {
         }
         Ui.printMessage("Total water consumed: " + totalWater + "ml");
     }
+
 }

@@ -8,6 +8,7 @@ public class BMICommand extends InputOnlyCommand {
     private final double height; // in meters
 
     public BMICommand(String input, double weight, double height) {
+        //@@author Ahmish15
         super(input);
         this.weight = weight;
         this.height = height;
