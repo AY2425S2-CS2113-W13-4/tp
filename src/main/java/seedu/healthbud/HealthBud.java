@@ -1,7 +1,7 @@
 package seedu.healthbud;
 
 import seedu.healthbud.exception.HealthBudException;
-import seedu.healthbud.parser.GeneralParser;
+import seedu.healthbud.parser.ParserManager;
 import seedu.healthbud.storage.Storage;
 import java.util.Scanner;
 
@@ -25,7 +25,7 @@ public class HealthBud {
         Scanner in = new Scanner(System.in);
         boolean isLooping = true;
         while (isLooping) {
-            isLooping = GeneralParser.handleInput(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs,
+            isLooping = ParserManager.handleInput(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs,
                     in.nextLine().trim().toLowerCase());
         }
     }

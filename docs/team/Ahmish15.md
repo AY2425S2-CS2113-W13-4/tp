@@ -9,7 +9,6 @@ Implemented all the Add commands and their respective parser classes. Also imple
 https://github.com/Ahmish15/tp
 
 ## Enhancements implemented
-
 Split the AddLogsCommand into 5 different classes to make it more modular and easier to read. Added the SearchCommand and BMICommand classes to allow users to search for their logs and calculate their BMI respectively.
 
 ## Contributions to the UG

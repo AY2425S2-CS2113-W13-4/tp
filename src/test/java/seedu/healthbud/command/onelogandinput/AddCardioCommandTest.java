@@ -1,17 +1,18 @@
-package seedu.healthbud;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+package seedu.healthbud.command.onelogandinput;
 
 import org.junit.jupiter.api.Test;
-import seedu.healthbud.command.onelogandinput.AddCardioCommand;
+import seedu.healthbud.LogList;
 import seedu.healthbud.exception.InvalidCardioException;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.log.Cardio;
 import seedu.healthbud.parser.addcommandparser.AddCardioParser;
 
-public class AddCardioCommandTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//import static org.junit.jupiter.api.Assertions.*;
+
+class AddCardioCommandTest {
     @Test
     void addCardio_correctInput_expectSuccess()
             throws InvalidDateFormatException {

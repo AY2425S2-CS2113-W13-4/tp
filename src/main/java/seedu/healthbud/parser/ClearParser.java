@@ -20,15 +20,15 @@ public class ClearParser {
 
         switch (logType) {
         case "pb":
-            return new ClearCommand(input, pbLogs, logType);
+            return new ClearCommand(input, pbLogs);
         case "meal":
-            return new ClearCommand(input, mealLogs, logType);
+            return new ClearCommand(input, mealLogs);
         case "workout":
-            return new ClearCommand(input, workoutLogs, logType);
+            return new ClearCommand(input, workoutLogs);
         case "water":
-            return new ClearCommand(input, waterLogs, logType);
+            return new ClearCommand(input, waterLogs);
         case "cardio":
-            return new ClearCommand(input, cardioLogs, logType);
+            return new ClearCommand(input, cardioLogs);
         default:
             throw new InvalidClearException();
         }

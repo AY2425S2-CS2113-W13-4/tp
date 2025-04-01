@@ -6,7 +6,7 @@ import seedu.healthbud.command.commandinterface.Command;
 import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.parser.addcommandparser.AddParser;
 
-public class GeneralParser {
+public class ParserManager {
 
     public static final String NEW_LINE = "\n     ";
 

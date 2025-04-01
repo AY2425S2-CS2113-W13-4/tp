@@ -14,6 +14,7 @@ dependencies {
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
 }
 
+
 test {
     useJUnitPlatform()
 
@@ -44,4 +45,13 @@ checkstyle {
 run{
     standardInput = System.in
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaExec) {
+    systemProperty "file.encoding", "UTF-8"
+}
+
 

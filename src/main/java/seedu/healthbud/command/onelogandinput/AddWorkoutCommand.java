@@ -1,7 +1,7 @@
 package seedu.healthbud.command.onelogandinput;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.log.WorkOUT;
+import seedu.healthbud.log.Workout;
 
 
 //@@ author Ahmish15
@@ -45,7 +45,7 @@ public class AddWorkoutCommand extends OneLogCommand {
 
     @Override
     public void execute(){
-        WorkOUT newWorkout = new WorkOUT(name, reps, sets, date, weight);
+        Workout newWorkout = new Workout(name, reps, sets, date, weight);
         logList.addLog(newWorkout);
     }
 

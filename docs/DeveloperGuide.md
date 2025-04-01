@@ -19,16 +19,16 @@ Key components:
 5. Storage – Handles saving and loading of logs from a local text file.
 6. Ui – Responsible for displaying messages to the user.
 
-### Features
-{@everyone i think this is where u add the week 10 DG stuff??? tbh i think this is chattable - kin}
-#### Recommend
+# Features
 
-1. Feature overview
+## Recommend
+
+### 1. Feature overview
    The RecommendCommand feature allows users to receive workout recommendations tailored to a specific muscle group. The
    command takes the form recommend <muscle_group> and responds with a set of 3 recommended exercises. This feature is
    intended for fitness enthusiasts who may need guidance or variety in their training routines.
 
-2. Implementation details
+### 2. Implementation details
    The RecommendCommand class extends the base Command class and overrides the execute method. The command supports inputs
    like recommend biceps, recommend legs, and so on. The logic of selecting which recommendation to print is
    encapsulated in a helper method getRecommendation(String input) which parses the input and returns a corresponding
@@ -36,33 +36,33 @@ Key components:
    separation also makes the logic more testable, as the string-producing logic in getRecommendation() can be unit
    tested independently without checking the output stream.
 
-3. Why this design
+### 3. Why this design
 - Separation of concerns: By moving the recommendation content generation to a separate method, we improve readability
   and testability.
 - Scalability: Adding new muscle groups or modifying messages is centralized in getRecommendation(), making it easier to
   extend.
 - Robustness: Proper input validation and informative error messages ensure a good user experience.
 
-4. Alternatives considered
+### 4. Alternatives considered
 - Using Enums for muscle groups: Initially considered using an enum with mappings to lists of exercises. While this
   improves type-safety, it adds overhead and less flexibility for user input variations.
 - Reading recommendations from a file: Considered storing recommendations in a file, but added unnecessary I/O for a
   static set of data.
 
-5. Sequence Diagrams
+### 5. Sequence Diagrams
 - {to be updated using plantUML}
 
-6. Future Improvements
+### 6. Future Improvements
 - Store recommendations in a config file or JSON for easier modification.
 
-#### command uw to talk about jason
-1. Feature overview:
+## Find command 
+### 1. Feature overview:
    FindCommand enables users to search for log entries that contain a specific keyword within a particular category (e.g., meal, workout, water).
    Users invoke the command with the format: `find` <log_type> <keyword>.
    Upon execution, the command traverses the corresponding log list and prints out any log entries that contain the specified keyword.
    This feature is particularly useful for quickly retrieving relevant logs based on user-provided search terms.
 
-2. Implementation details:
+### 2. Implementation details:
    Input Parsing & Validation:
    The command begins by trimming and splitting the input string into parts. It expects at least three tokens (the command word, the log type, and the keyword).
    Type-Based Delegation:
@@ -72,7 +72,7 @@ Key components:
    Error Handling:
    If the input is improperly formatted or the log type is invalid, a custom `InvalidFindException` is thrown, ensuring that the user receives clear feedback on what went wrong.
 
-3. Why this design:
+### 3. Why this design:
    Separation of Concerns:
    By delegating the keyword search logic to the findLog method within the LogList, the FindCommand class remains focused solely on input parsing and routing. This separation improves readability and testability.
    Modularity and Maintainability:
@@ -80,16 +80,16 @@ Key components:
    Robustness:
    Input validation and exception handling ensure that the command fails gracefully, providing clear error messages when users supply invalid inputs.
 
-4. Alternatives considered:
+### 4. Alternatives considered:
    Centralized Search in the Parser:
    An alternative was to perform the search directly within the Parser class. However, this approach would have mixed command routing with business logic, reducing modularity and making unit testing more difficult.
    Advanced Search Techniques:
    Using more sophisticated filtering techniques (e.g., regular expressions or fuzzy matching) was considered. Ultimately, a simple keyword search was chosen to keep the implementation straightforward while meeting current requirements.
 
-5. Sequence Diagrams:
+### 5. Sequence Diagrams:
 
 
-6. Future Improvements:
+### 6. Future Improvements:
    Enhanced Search Capabilities:
    Incorporate multi-keyword search, case-insensitive matching, or fuzzy search to better capture user intent.
    UI Feedback Enhancements:
@@ -176,8 +176,8 @@ Incorporating logging of search queries and performance metrics could help monit
 
 
 
-#### command uw to talk about travis
-1. Feature overview
+## AddWorkoutCommand
+### 1. Feature overview
 
 The AddWorkoutCommand allows users to track their strength training exercise in the HealthBud application.
 This feature captures five key pieces of information for each workout session:
@@ -187,7 +187,7 @@ The system stores these records in a dedicated workout log list that users can v
 Users interact with this feature through a structured command format:
 `add workout` [Workout_name] /w [weight in Kg] /r [number of reps] /s [number of sets] /d [date]
 
-2. Implementation details
+### 2. Implementation details
 
 When users enter an "add workout" command, the system follows a defined sequence of operations to ensure proper recording of exercise data.
 The process begins with the GeneralParser, which identifies the command type and directs workout entries to the specialized AddWorkoutParser.
@@ -198,7 +198,7 @@ For the workout name, the system extracts all text preceding the first parameter
 During command execution, the system instantiates a new WorkOUT object with the verified parameters.
 This immutable data object is then added to the application's centralized workout log.
 All exceptions, including invalid numeric values or date formats, are caught and presented to users as actionable error messages.
-3. Why this design
+### 3. Why this design
 
 The current implementation follows several key design principles to ensure robustness and maintainability.
 The command pattern was deliberately chosen to create a clear separation between parsing user input and executing commands.
@@ -215,7 +215,7 @@ This immutability also enables thread-safe operations, future-proofing the appli
 The parsing logic incorporates multiple validation layers for maximum data integrity.
 Each parameter undergoes type checking, format verification, and range validation before being accepted.
 This thorough validation occurs before any changes to application state, following the fail-fast principle to prevent partial or invalid updates.
-4. Alternatives considered
+### 4. Alternatives considered
 
 We initially considered using positional arguments rather than parameter markers,
 where users would enter values in a fixed order (e.g., "add workout [name] [weight] [reps] [sets] [date]").
@@ -227,22 +227,23 @@ rather than dedicated classes for each log type.
 This unified approach was abandoned because it would have required extensive runtime type checking and reduced type safety.
 The current specialized class structure provides better compile-time checks and more intuitive code organization.
 
-5. Sequence Diagrams
-6. Future Improvements
+### 5. Sequence Diagrams
+![Addworkout.png](Images/Addworkout.png)
 
+### 6. Future Improvements
 The weight tracking functionality will be enhanced to support more advanced strength training scenarios.
 This will include the ability to record varying weights within a single workout session, such as pyramid sets or drop sets, through an expanded command syntax.
 
 
 
 
-#### command uw to talk about keane
-1. Feature Overview
+## Goals
+### 1. Feature Overview
 
 The Goals feature allows users to set and view personalized health goals within the chatbot. These include:
 Daily Water Intake Goal (/w), Daily Calorie Intake Goal (/cal), Weight Goal (/kg)
 
-2. Implementation Details
+### 2. Implementation Details
 
 The goal command is implemented as part of a switch statement in the main command handling logic. Here's how it works:
 Upon entering the goal command using the command "add goal", the user is greeted and shown their current goals from the
@@ -252,22 +253,22 @@ weight progress prompts the user to select a day to view progress data from wate
 The user inputs are parsed with Scanner, and exceptions such as InvalidDateException and InvalidGoalException
 are handled gracefully.
 
-3. Why This Design
-   Simplicity: Using a command-line loop with conditionals provides clear control flow and is easy to debug.
-   Singleton Pattern: Goals.getInstance() ensures consistent access and modification of user goals.
-   User-Friendly Prompts: Each interaction provides guidance on valid inputs and current status.
-   Separation of Concerns: Goal logic is kept distinct from log retrieval (waterLogs, mealLogs), enabling modular testing.
+### 3. Why This Design
+  Simplicity: Using a command-line loop with conditionals provides clear control flow and is easy to debug.
+  Singleton Pattern: Goals.getInstance() ensures consistent access and modification of user goals.
+  User-Friendly Prompts: Each interaction provides guidance on valid inputs and current status.
+  Separation of Concerns: Goal logic is kept distinct from log retrieval (waterLogs, mealLogs), enabling modular testing.
 
-4. Alternatives Considered
+### 4. Alternatives Considered
    Command Pattern: We considered implementing a command design pattern to encapsulate each action
    (e.g., update water goal), but deemed it too complex for the scope.
    GUI-based input: Given the chatbot nature and CLI interaction, we opted not to build a graphical interface.
    Database-backed goal storage: For now, data is likely held in-memory for simplicity; persistent storage could
    be added later.
 
-5. Sequence Diagrams
+### 5. Sequence Diagrams
 
-6. Future Improvements
+### 6. Future Improvements
    Input validation: Add regex or parsing to ensure valid numeric inputs.
    Persistent Storage: Save goals and logs to a file or database for state retention across sessions.
    Multi-user support: Refactor to support multiple user profiles.

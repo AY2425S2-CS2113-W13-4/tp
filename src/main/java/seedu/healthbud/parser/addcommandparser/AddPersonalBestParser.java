@@ -1,33 +1,33 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.AddPBCommand;
+import seedu.healthbud.command.onelogandinput.AddPersonalBestCommand;
 import seedu.healthbud.exception.InvalidDateFormatException;
-import seedu.healthbud.exception.InvalidPBException;
+import seedu.healthbud.exception.InvalidPersonalBestException;
 import seedu.healthbud.parser.DateParser;
 import seedu.healthbud.parser.ParserParameters;
 
 import java.util.Map;
 
-public class AddPBParser {
+public class AddPersonalBestParser {
 
-    public static AddPBCommand parse(LogList pbLogs, String input)
-            throws InvalidPBException, InvalidDateFormatException {
+    public static AddPersonalBestCommand parse(LogList pbLogs, String input)
+            throws InvalidPersonalBestException, InvalidDateFormatException {
 
         String[] parts = input.trim().split(" ");
         if (parts.length < 2) {
-            throw new InvalidPBException();
+            throw new InvalidPersonalBestException();
         }
 
         assert input != null : "Invalid personal best input!";
         if (!input.contains("/w ") || !input.contains("/d ")) {
-            throw new InvalidPBException();
+            throw new InvalidPersonalBestException();
         }
 
         input = input.replaceFirst("add pb", "").trim();
 
         if (input.isEmpty()) {
-            throw new InvalidPBException();
+            throw new InvalidPersonalBestException();
         }
 
         int firstParamIndex = input.indexOf('/');
@@ -42,15 +42,15 @@ public class AddPBParser {
         if (name.isEmpty() ||
                 !param.containsKey("w") || param.get("w").isEmpty() ||
                 !param.containsKey("d") || param.get("d").isEmpty()) {
-            throw new InvalidPBException();
+            throw new InvalidPersonalBestException();
         }
 
         if (!param.get("w").matches("\\d+")) {
-            throw new InvalidPBException();
+            throw new InvalidPersonalBestException();
         }
         String formattedDate = DateParser.formatDate(param.get("d"));
 
-        return new AddPBCommand(pbLogs, input, name,
+        return new AddPersonalBestCommand(pbLogs, input, name,
                 param.get("w"), formattedDate);
     }
 }

@@ -12,62 +12,37 @@
 '/
 
 abstract class Command {
-    +execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
-             LogList waterLogs, LogList cardioLogs, String input): void
+    +execute(): void
+}
+
+class InputOnlyCommand {
+    -input: String
+    +InputOnlyCommand(input: String)
 }
 
 class RecommendCommand {
-    +execute(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
-                          LogList waterLogs, LogList cardioLogs, String input): void
-    +getRecommendation(input: String): String
+    -list: String
+    +RecommendCommand(list: String)
+    +getMessage(): String
+    +execute(): void
 }
 
-Command <|-- RecommendCommand
-
-class Parser {
-    +handleInput(...)
+class RecommendParser {
+    +parse(input: String): RecommendCommand
 }
 
-Parser "1" --> "0..1" RecommendCommand : creates
-
-class LogList
-
-class InvalidRecommendException
 class HealthBudException
+class InvalidRecommendException
 
-class LogList {
-    -logs: List<Log>
+Command <|-- InputOnlyCommand
 
-    +getLog(index: int): Log
-    +getSize(): int
-    +isEmpty(): boolean
-    +addLog(log: Log): void
-    +loadLog(log: Log): void
-    +deleteLog(index: int): void
-    +listLogs(): void
-    +findLog(keyword: String): void
-    +clearLogs(): void
-    +getAllDates(): void
-    +getCaloriesSum(date: String): int
-    +getCardioSum(date: String): int
-    +getWaterSum(date: String): void
-}
+InputOnlyCommand <|-- RecommendCommand
 
-class InvalidRecommendException {
-    +InvalidRecommendException()
-}
+RecommendParser ..> RecommendCommand : creates
+RecommendCommand ..> HealthBudException : throws
+RecommendCommand ..> InvalidRecommendException : throws
 
-class HealthBudException {
-    +HealthBudException()
-}
-
-/'inheritance'/
 InvalidRecommendException --|> Exception
 HealthBudException --|> Exception
-
-/'dependency'/
-RecommendCommand ..> LogList
-RecommendCommand ..> InvalidRecommendException
-RecommendCommand ..> HealthBudException
 
 @enduml

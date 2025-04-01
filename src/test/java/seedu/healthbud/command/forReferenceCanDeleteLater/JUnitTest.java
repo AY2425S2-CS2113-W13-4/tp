@@ -1,3 +1,4 @@
+/*
 package seedu.healthbud;
 
 //import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -111,45 +112,7 @@ class JUnitTest {
 
 
 
-    /*
-    //        ========================= Meal Log Tests =========================
 
-    @Test
-    void mealLog_correctInput_expectSuccess() throws InvalidMealException, InvalidWorkoutException,
-            InvalidWaterException, InvalidLogException, InvalidPBException, InvalidMLException,
-            InvalidCardioException {
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-        String input = "add meal Chicken Rice /cal 550 /d 12-01-25 /t 9pm";
-
-        new AddLogCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input);
-
-        assertEquals(1, mealLogs.getSize());
-        assertEquals("Chicken Rice", ((Meal) mealLogs.getLog(0)).getName());
-        assertEquals("550", ((Meal) mealLogs.getLog(0)).getCalories());
-        assertEquals("12-01-25", (mealLogs.getLog(0)).getDate());
-        assertEquals("9pm", ((Meal) mealLogs.getLog(0)).getTime());
-    }
-
-    @Test
-    void mealLog_wrongInput_expectFailure() {
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-        // Missing calories parameter "/cal"
-        String input = "add meal Chicken Rice /d 12-01-25 /t 9pm";
-
-        // assert throws alrdy catches the exception so in the method dn add "throws"
-        assertThrows(InvalidMealException.class, () -> new AddLogCommand().execute(goalLogs,
-                pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input));
-    }
 
     //        ========================= Water Log Tests =========================
     @Test
@@ -577,48 +540,6 @@ class JUnitTest {
         });
     }
 
-    // ========================= Delete workout Tests =========================
-    @Test
-    void deleteWorkout_correctInput_expectSuccess() throws InvalidMealException, InvalidWorkoutException,
-            InvalidWaterException, InvalidLogException, InvalidPBException, InvalidMLException,
-            InvalidCardioException, InvalidDeleteException, HealthBudException {
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(output));
-
-        String input = "add workout bicep curls /r 20 /s 3 /d 12-01-25";
-        new AddLogCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input);
-
-        String deleteInput = "delete workout 1";
-        new DeleteCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, deleteInput);
-
-        String expected = "Noted. I've removed this log:";
-        assertTrue(output.toString().contains(expected));
-        assertEquals(0, workoutLogs.getSize());
-    }
-
-    @Test
-    void deleteWorkout_wrongInput_expectFailure() {
-
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-
-        String findInput = "delete workout"; // missing index
-
-        assertThrows(Exception.class, () -> {
-            new FindCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, findInput);
-        });
-    }
 
     // ========================= Clear function Tests =========================
     @Test
@@ -690,7 +611,9 @@ class JUnitTest {
         assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate(null)); // Null input
         assertThrows(InvalidDateFormatException.class, () -> DateParser.formatDate("")); // Empty string
     }
-    */
+    *//*
+
 
 }
 
+*/
