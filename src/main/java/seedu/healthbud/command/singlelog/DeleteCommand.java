@@ -25,4 +25,8 @@ public class DeleteCommand extends SingleLogCommand {
     public LogList getLogList() {
         return logList;
     }
+
+    public int getIndex() {
+        return index;
+    }
 }
