@@ -1,7 +1,7 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.AddPersonalBestCommand;
+import seedu.healthbud.command.singlelog.AddPersonalBestCommand;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.exception.InvalidPersonalBestException;
 import seedu.healthbud.parser.DateParser;

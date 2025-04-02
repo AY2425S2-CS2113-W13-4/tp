@@ -1,7 +1,7 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.AddCardioCommand;
+import seedu.healthbud.command.singlelog.AddCardioCommand;
 import seedu.healthbud.exception.InvalidCardioException;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.parser.DateParser;

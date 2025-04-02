@@ -1,6 +1,5 @@
 package seedu.healthbud;
 
-import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.parser.ParserManager;
 import seedu.healthbud.storage.Storage;
 import java.util.Scanner;
@@ -19,7 +18,7 @@ public class HealthBud {
     public static LogList goalLogs = new LogList();
 
 
-    public static void main(String[] args) throws HealthBudException {
+    public static void main(String[] args) {
         Ui.printGreeting();
         Storage.loadLogs(mealLogs, workoutLogs, waterLogs, pbLogs, cardioLogs, goalLogs);
         Scanner in = new Scanner(System.in);

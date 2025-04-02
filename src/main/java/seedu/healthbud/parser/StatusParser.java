@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.alllogsandinput.StatusCommand;
+import seedu.healthbud.command.multilog.StatusCommand;
 import seedu.healthbud.exception.InvalidStatusException;
 
 public class StatusParser {

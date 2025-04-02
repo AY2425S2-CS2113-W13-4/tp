@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant ":HealthBud" as HealthBud
+participant ":GeneralParser" as GeneralParser
+participant ":DeleteParser" as DeleteParser
+participant ":DeleteCommand" as DeleteCommand
+participant "targetLogList:LogList" as LogList
+
+User -> HealthBud : "delete [logType] [index]"
+activate HealthBud
+
+HealthBud -> GeneralParser : handleInput("delete [logType] [index]", targetLogList, ...)
+activate GeneralParser
+
+GeneralParser -> DeleteParser : parse("delete [logType] [index]", targetLogList, ...)
+activate DeleteParser
+
+DeleteParser -> DeleteParser : Extract log type and index
+DeleteParser -> GeneralParser : return DeleteCommand(targetLogList, index=adjusted)
+deactivate DeleteParser
+
+GeneralParser -> DeleteCommand : execute()
+activate DeleteCommand
+
+DeleteCommand -> LogList : deleteLog(adjustedIndex)
+activate LogList
+LogList --> DeleteCommand : confirmation (log deleted)
+deactivate LogList
+
+DeleteCommand --> GeneralParser : success message
+deactivate DeleteCommand
+
+GeneralParser --> HealthBud : success message
+deactivate GeneralParser
+
+HealthBud --> User : display success message
+deactivate HealthBud
+@enduml

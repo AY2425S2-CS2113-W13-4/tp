@@ -1,0 +1,69 @@
+/*
+@startuml
+' https://plantuml.com/class-diagram
+
+package seedu.healthbud.log {
+    class Log {
+        +Log(String date, String type)
+    }
+
+    class Goals {
+        -dailyWaterGoal: String
+        -dailyCalorieGoal: String
+        -weightGoal: String
+        -weeklyWeightProgress: String
+        -Goals(String, String, String, String, String)
+        +getInstance(): Goals
+        +updateGoals(water: String, calorie: String, weight: String): void
+        +setDailyWaterGoal(String): void
+        +setDailyCalorieGoal(String): void
+        +setWeightGoal(String): void
+        +setWeeklyWeightProgress(String): void
+        +getDailyWaterGoal(): String
+        +getDailyCalorieGoal(): String
+        +getWeightGoal(): String
+        +getWeeklyWeightProgress(): String
+        +toString(): String
+    }
+
+    Log <|-- Goals
+}
+
+
+package seedu.healthbud.command.onelogandinput {
+    class OneLogCommand {
+        +OneLogCommand(LogList, String)
+    }
+
+    class AddGoalCommand {
+        -waterGoal: String
+        -calorieGoal: String
+        -weightGoal: String
+        -weeklyWeightProgress: String
+        +AddGoalCommand(LogList, String, String, String, String)
+        +execute(): void
+    }
+
+    OneLogCommand <|-- AddGoalCommand
+    AddGoalCommand --> Goals : uses
+}
+
+package seedu.healthbud.parser.addcommandparser {
+    class AddGoalParser {
+        +parse(LogList, String): AddGoalCommand throws InvalidGoalException
+    }
+
+    AddGoalParser --> AddGoalCommand : creates
+    AddGoalParser --> Goals : accesses singleton
+}
+
+class LogList
+class Ui
+class InvalidGoalException
+
+AddGoalCommand --> Ui : calls
+AddGoalParser --> InvalidGoalException : throws
+
+
+@enduml
+*/

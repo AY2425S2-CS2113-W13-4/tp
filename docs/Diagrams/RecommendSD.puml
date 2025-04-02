@@ -1,27 +1,34 @@
 @startuml
-'autonumber adds numbering to calls
 autonumber
-
-/' for now i put as alt for valid input and invalid input'/
-/' but idk if i shoukd be splitting it into the respective muscle groups and their respective outputs'/
-/' can u have multiple boxes for alt? is not limited to 2 paths rye - need to ask cf'/
 
 actor User
 participant "RecommendParser" as Parser
 participant "RecommendCommand"
 participant "Ui"
-participant "ExceptionHandler\n(HealthBudException / InvalidRecommendException)"
+participant "ExceptionHandler\n(HealthBudException / InvalidRecommendException)" as ExceptionHandler
 
 User -> Parser: parse("recommend chest")
+activate Parser
 
 alt valid input
     Parser -> RecommendCommand: new RecommendCommand(list)
+    activate RecommendCommand
     Parser --> User: RecommendCommand
+    deactivate RecommendCommand
+
     User -> RecommendCommand: execute()
+    activate RecommendCommand
+
     RecommendCommand -> Ui: printMessage(list)
+    activate Ui
+    deactivate Ui
+
+    deactivate RecommendCommand
 else invalid input
     Parser -> ExceptionHandler: throw InvalidRecommendException / HealthBudException
+    activate ExceptionHandler
+    deactivate ExceptionHandler
 end
 
+deactivate Parser
 @enduml
-

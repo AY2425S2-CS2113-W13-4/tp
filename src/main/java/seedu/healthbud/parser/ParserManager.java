@@ -2,8 +2,7 @@ package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
 import seedu.healthbud.Ui;
-import seedu.healthbud.command.commandinterface.Command;
-import seedu.healthbud.exception.HealthBudException;
+import seedu.healthbud.command.Command;
 import seedu.healthbud.parser.addcommandparser.AddParser;
 
 public class ParserManager {
@@ -11,7 +10,7 @@ public class ParserManager {
     public static final String NEW_LINE = "\n     ";
 
     public static boolean handleInput(LogList goalLogs, LogList pbLogs, LogList mealLogs, LogList workoutLogs,
-                                      LogList waterLogs, LogList cardioLogs, String input) throws HealthBudException {
+                                      LogList waterLogs, LogList cardioLogs, String input) {
         String[] parts = input.trim().split("\\s+");
 
         try {
@@ -20,9 +19,8 @@ public class ParserManager {
             case "bye":
                 return Ui.printGoodbye();
             case "add":
-                String subCommand = parts[1].toLowerCase();
-                command = AddParser.parse(subCommand, mealLogs, waterLogs, cardioLogs,
-                        pbLogs, workoutLogs, goalLogs, input);
+                command = AddParser.parse(parts[1], mealLogs, waterLogs, cardioLogs, pbLogs,
+                        workoutLogs, goalLogs, input);
                 break;
             case "help":
                 Ui.printHelp();
@@ -51,6 +49,9 @@ public class ParserManager {
             case "search":
                 command = SearchParser.parse(input, mealLogs, workoutLogs, waterLogs, pbLogs, cardioLogs, goalLogs);
                 break;
+            case "view":
+                ViewGoalsParser.parse(input);
+                return true;
             default:
                 Ui.printUnknownCommand();
                 return true;

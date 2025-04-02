@@ -1,6 +1,6 @@
 package seedu.healthbud.parser;
 
-import seedu.healthbud.command.inputonly.BMICommand;
+import seedu.healthbud.command.input.BMICommand;
 import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.exception.InvalidBMIException;
 

@@ -1,7 +1,7 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.AddWorkoutCommand;
+import seedu.healthbud.command.singlelog.AddWorkoutCommand;
 import seedu.healthbud.exception.InvalidWorkoutException;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.parser.DateParser;

@@ -1,0 +1,80 @@
+@startuml
+title HealthBud Parser Flow
+skinparam defaultFontSize 14
+skinparam arrowThickness 1
+
+class ParserManager {
+  +handleInput(goalLogs: LogList, pbLogs: LogList, mealLogs: LogList, workoutLogs: LogList, waterLogs: LogList, cardioLogs: LogList, input: String): boolean
+}
+
+class BMIParser {
+}
+class ClearParser {
+}
+class DeleteParser {
+}
+class ListParser {
+}
+class RecommendParser {
+}
+class SearchParser {
+}
+class StatusParser {
+}
+class SumParser {
+}
+
+class AddParser {
+  +parse(subCommand: String, mealLogs: LogList, waterLogs: LogList, cardioLogs: LogList, pbLogs: LogList, workoutLogs: LogList, goalLogs: LogList, input: String)
+}
+
+' AddParser points to its specific add-command parsers
+class AddCardioParser {
+}
+class AddMealParser {
+}
+class AddPersonalBestParser {
+}
+class AddWaterParser {
+}
+class AddWorkoutParser {
+}
+
+class Command {
+}
+
+' Relationships from ParserManager to normal parsers and AddParser
+ParserManager --> BMIParser
+ParserManager --> ClearParser
+ParserManager --> DeleteParser
+ParserManager --> ListParser
+ParserManager --> RecommendParser
+ParserManager --> SearchParser
+ParserManager --> StatusParser
+ParserManager --> SumParser
+ParserManager --> AddParser
+
+' Relationships from AddParser to specific add-command parsers
+AddParser --> AddCardioParser
+AddParser --> AddMealParser
+AddParser --> AddPersonalBestParser
+AddParser --> AddWaterParser
+AddParser --> AddWorkoutParser
+
+' All parser classes point to Command
+BMIParser --> Command
+ClearParser --> Command
+DeleteParser --> Command
+ListParser --> Command
+RecommendParser --> Command
+SearchParser --> Command
+StatusParser --> Command
+SumParser --> Command
+AddParser --> Command
+AddCardioParser --> Command
+AddMealParser --> Command
+AddPersonalBestParser --> Command
+AddWaterParser --> Command
+AddWorkoutParser --> Command
+
+@enduml

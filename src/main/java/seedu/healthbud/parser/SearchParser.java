@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.SearchCommand;
+import seedu.healthbud.command.singlelog.SearchCommand;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.exception.InvalidSearchException;
 

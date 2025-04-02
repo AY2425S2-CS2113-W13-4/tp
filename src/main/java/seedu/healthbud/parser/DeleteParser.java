@@ -1,7 +1,7 @@
 package seedu.healthbud.parser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.DeleteCommand;
+import seedu.healthbud.command.singlelog.DeleteCommand;
 import seedu.healthbud.exception.HealthBudException;
 import seedu.healthbud.exception.InvalidDeleteException;
 

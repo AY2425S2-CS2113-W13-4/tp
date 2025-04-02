@@ -1,7 +1,7 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.commandinterface.Command;
+import seedu.healthbud.command.Command;
 import seedu.healthbud.exception.InvalidCardioException;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.exception.InvalidGoalException;

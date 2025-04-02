@@ -7,19 +7,107 @@ This application was developed as part of a university software engineering modu
 2. JavaFX Documentation
 3. Official Java 17 Documentation
 
-## Design & implementation
-### Overall Architecture
+## Design
 
-HealthBud is structured following a Command-based architecture.
-Key components:
-1. Main class – Starts the application.
-2. Parser – Interprets user input and returns the appropriate Command object.
-3. Command classes – Each user command (e.g., AddLogCommand, BMICommand, RecommendCommand) is encapsulated in its own class.
-4. LogList – Maintains lists for each log type (Meal, Workout, Water, etc.).
-5. Storage – Handles saving and loading of logs from a local text file.
-6. Ui – Responsible for displaying messages to the user.
+### Architecture
 
-# Features
+`//include architecture diagram here`
+
+The Architecture Diagram given above explains the high-level design of the HealthBud.
+
+Given below is a quick overview of main components and how they interact with each other.
+
+**Main Components**
+
+`HealthBud` is in charge of the CLI to launch and the exit.
+
+- At CLI launch, it initializes the other components in the correct sequence, and connects them up with each other.
+- At exit, it shuts down the other components and invokes cleanup methods where necessary.
+
+The bulk of the CLI's work id done by the following components:
+
+- [**`UI`**](#ui): Responsible for displaying messages to the user.
+- [**`Parser`**](#parser): Interprets user commands and constructs the corresponding `Command` objects.
+- [**`Command`**](#command): Contains the logic for executing user commands.
+- [**`LogList`**](#loglist): **(New)** Maintains lists for each log type (Meal, Workout, Water, etc.).
+- [**`Storage`**](#storage): Handles reading and writing data to and from the hard disk.
+- [**`Data`**](#data): Holds the in-memory data (logs) of the app.
+
+### UI
+
+### Parser
+
+![Parser_Class_Diagram](Images/ParserCD.png)
+
+The Parser interface uses a series of classes to implement the various commands.
+
+### Command
+`//TODO: include command class diagram here`
+
+### LogList
+`//TODO: include command class diagram here`
+
+### Storage
+`//TODO: include command class diagram here`
+
+### Data
+`//TODO: include command class diagram here`
+
+
+## implementation
+
+### Add Log Command
+`//TODO: include SD here`
+
+### Delete Log Command
+The delete log feature allows users to remove a log by its index in the application's log list. This feature is handled by the DeleteCommand class, which performs validation, deletion, and error handling.
+
+1. User Input: <br>
+  The user enters the delete command followed by the log's index (e.g., delete meal 3).
+
+
+2. Command Parsing: <br>
+The Parser converts the input into a DeleteCommand object, adjusting the index to match the list’s 0-based indexing.
+
+
+3. Execution: <br>
+The DeleteCommand:
+
+ - Validation: Verifies whether the specified index is valid and corresponds to an existing meal log.
+
+- Error Handling: If the index is invalid, an error message is returned to the user.
+
+- Deletion: If the index is valid, the command retrieves the meal log’s details, removes the meal log from the mealLogs list, and generates a success message.
+
+#### Sequence Diagram
+![DeleteLog.png](Images/DeleteSD.png)
+WHICH IS BETTER
+![DeleteLog.png](Images/DeleteSD1.png)
+
+Diagram Explanation <br>
+1. User Input:
+The user enters delete meal 3 in the CLI.
+
+
+2. Parsing: <br>
+The ParserManager receives the command and calls DeleteParser to interpret it. <br>
+DeleteParser returns a DeleteCommand object (with the index adjusted to 0-based indexing) to ParserManager.
+
+
+3. Command Execution:
+ParserManager calls execute() on the DeleteCommand.
+DeleteCommand invokes deleteLog(3) on mealLogs.
+
+
+4. Outcome: <br>
+An alternative flow distinguishes between:
+
+- Invalid Index: An error message is returned and displayed to the user.
+
+- Valid Index: The meal log is removed from mealLogs and a success message is shown.
+
+This clear separation of user input, command parsing, and execution ensures that the deletion operation is handled in a structured and predictable manner.
+
 
 ## Recommend
 
@@ -54,39 +142,6 @@ Key components:
 
 ### 6. Future Improvements
 - Store recommendations in a config file or JSON for easier modification.
-
-## Find command 
-### 1. Feature overview:
-   FindCommand enables users to search for log entries that contain a specific keyword within a particular category (e.g., meal, workout, water).
-   Users invoke the command with the format: `find` <log_type> <keyword>.
-   Upon execution, the command traverses the corresponding log list and prints out any log entries that contain the specified keyword.
-   This feature is particularly useful for quickly retrieving relevant logs based on user-provided search terms.
-
-### 2. Implementation details:
-   Input Parsing & Validation:
-   The command begins by trimming and splitting the input string into parts. It expects at least three tokens (the command word, the log type, and the keyword).
-   Type-Based Delegation:
-   A switch-case statement directs the search to the appropriate `LogList` (e.g., mealLogs, workoutLogs, waterLogs) based on the provided log type.
-   Delegated Search Logic:
-   The actual keyword search is handled by the `findLog` method within each `LogList`. This method iterates over the logs and prints matching entries using the UI helper methods.
-   Error Handling:
-   If the input is improperly formatted or the log type is invalid, a custom `InvalidFindException` is thrown, ensuring that the user receives clear feedback on what went wrong.
-
-### 3. Why this design:
-   Separation of Concerns:
-   By delegating the keyword search logic to the findLog method within the LogList, the FindCommand class remains focused solely on input parsing and routing. This separation improves readability and testability.
-   Modularity and Maintainability:
-   The design allows for easy updates. For example, if new log types are added or the search logic needs enhancement, changes are isolated to the relevant LogList or the switch-case structure in FindCommand.
-   Robustness:
-   Input validation and exception handling ensure that the command fails gracefully, providing clear error messages when users supply invalid inputs.
-
-### 4. Alternatives considered:
-   Centralized Search in the Parser:
-   An alternative was to perform the search directly within the Parser class. However, this approach would have mixed command routing with business logic, reducing modularity and making unit testing more difficult.
-   Advanced Search Techniques:
-   Using more sophisticated filtering techniques (e.g., regular expressions or fuzzy matching) was considered. Ultimately, a simple keyword search was chosen to keep the implementation straightforward while meeting current requirements.
-
-### 5. Sequence Diagrams:
 
 
 ### 6. Future Improvements:
@@ -228,7 +283,7 @@ This unified approach was abandoned because it would have required extensive run
 The current specialized class structure provides better compile-time checks and more intuitive code organization.
 
 ### 5. Sequence Diagrams
-![Addworkout.png](Images/Addworkout.png)
+![Addworkout.png](images/Addworkout.png)
 
 ### 6. Future Improvements
 The weight tracking functionality will be enhanced to support more advanced strength training scenarios.

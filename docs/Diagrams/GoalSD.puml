@@ -1,0 +1,29 @@
+/*
+@startuml
+'autonumber for call numbering
+autonumber
+
+actor User
+participant "AddGoalParser" as Parser
+participant "AddGoalCommand"
+participant "Goals (singleton)"
+participant "Ui"
+participant "ExceptionHandler\n(InvalidGoalException)"
+
+User -> Parser: parse("add goal /w 3000 /cal 2000 /kg 70")
+
+alt valid input
+    Parser -> Goals: getInstance()
+    Parser -> AddGoalCommand: new AddGoalCommand(goalLogs, input, "3000", "2000", "70")
+    Parser --> User: AddGoalCommand
+
+    User -> AddGoalCommand: execute()
+    AddGoalCommand -> Goals: getInstance()
+    AddGoalCommand -> Goals: updateGoals("3000", "2000", "70")
+    AddGoalCommand -> Ui: printMessage(goal.toString())
+else invalid input
+    Parser -> ExceptionHandler: throw InvalidGoalException
+end
+
+@enduml
+*/

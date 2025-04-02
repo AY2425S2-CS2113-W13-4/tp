@@ -6,7 +6,7 @@ team members. If your product overview extends beyond 1-2 sentences, the remaind
 # Summary of Contributions
 Implemented all the Add commands and their respective parser classes. Also implemented the Search and BMI Command and their parser classes.
 ## Code contributed
-https://github.com/Ahmish15/tp
+[Team Dashboard](https://nus-cs2113-ay2425s2.github.io/tp-dashboard/#/widget/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&chartGroupIndex=40&chartIndex=0)
 
 ## Enhancements implemented
 Split the AddLogsCommand into 5 different classes to make it more modular and easier to read. Added the SearchCommand and BMICommand classes to allow users to search for their logs and calculate their BMI respectively.

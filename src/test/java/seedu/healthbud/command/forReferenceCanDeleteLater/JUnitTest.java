@@ -223,39 +223,7 @@ class JUnitTest {
     }
 
     //        ========================= PB Log Tests =========================
-    @Test
-    void pbLog_correctInput_expectSuccess() throws InvalidMealException, InvalidWorkoutException,
-            InvalidWaterException, InvalidLogException, InvalidPBException, InvalidMLException,
-            InvalidCardioException {
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-        String input = "add pb bench /w 100 /d 12-01-25";
 
-        new AddLogCommand().execute(goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input);
-
-        assertEquals(1, pbLogs.getSize());
-        assertEquals("bench", ((PB) pbLogs.getLog(0)).getExercise());
-        assertEquals("100", ((PB) pbLogs.getLog(0)).getWeight());
-        assertEquals("12-01-25", ((PB) pbLogs.getLog(0)).getDate());
-    }
-
-    @Test
-    void pbLog_wrongInput_expectFailure() {
-        LogList goalLogs = new LogList();
-        LogList mealLogs = new LogList();
-        LogList workoutLogs = new LogList();
-        LogList pbLogs = new LogList();
-        LogList waterLogs = new LogList();
-        LogList cardioLogs = new LogList();
-        String input = "add pb /e bench /d 12-01-25"; // missing /w
-
-        assertThrows(InvalidPBException.class, () -> new AddLogCommand().execute(
-                goalLogs, pbLogs, mealLogs, workoutLogs, waterLogs, cardioLogs, input));
-    }
 
     //        ========================= Recommend Tests =========================
     @Test

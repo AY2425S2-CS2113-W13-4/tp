@@ -1,0 +1,38 @@
+@startuml
+actor User
+participant ":HealthBud" as HealthBud
+participant ":GeneralParser" as GeneralParser
+participant ":DeleteParser" as DeleteParser
+participant ":DeleteCommand" as DeleteCommand
+participant "mealLogs:LogList" as LogList
+
+User -> HealthBud : "delete meal 3"
+activate HealthBud
+
+HealthBud -> GeneralParser : handleInput("delete meal 3", mealLogs, ...)
+activate GeneralParser
+
+GeneralParser -> DeleteParser : parse("delete meal 3", mealLogs, ...)
+activate DeleteParser
+
+DeleteParser -> DeleteParser : Extract log type ("meal") and index (3)
+DeleteParser -> GeneralParser : return DeleteCommand(mealLogs, index=3)
+deactivate DeleteParser
+
+GeneralParser -> DeleteCommand : execute()
+activate DeleteCommand
+
+DeleteCommand -> LogList : deleteLog(2)   ' Adjusted for 0-based indexing
+activate LogList
+LogList --> DeleteCommand : confirmation (log deleted)
+deactivate LogList
+
+DeleteCommand --> GeneralParser : success message
+deactivate DeleteCommand
+
+GeneralParser --> HealthBud : success message
+deactivate GeneralParser
+
+HealthBud --> User : display success message
+deactivate HealthBud
+@enduml

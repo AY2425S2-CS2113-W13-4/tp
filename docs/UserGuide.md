@@ -2,17 +2,48 @@
 
 ## Introduction
 
-HealthBud is a fitness tracking application that helps users manage their workout routines, meal logs, water intake, and
-personal bests (PBs). With an easy-to-use command-line interface, users can log, view, and manage their fitness data
-efficiently.
+Welcome to HealthBud, your personal fitness companion! Whether you're tracking workouts, logging meals, monitoring water
+intake, or recording personal bests (PBs), HealthBud makes fitness management simple and effective. With an intuitive 
+command-line interface, you can easily log, view, and organize your fitness data.
 
-## Quick Start
+HealthBud goes beyond basic tracking by helping you set and monitor fitness goals, calculate BMI, track your cutting 
+or bulking progress, and even receive workout recommendations. Stay motivated and in control of your health journey with
+HealthBud!
 
-1. Ensure that you have Java 17 or above installed.
-2. Download the latest version of HealthBud from here.
-3. Open a terminal and navigate to the folder where the application is located.
-4. Run java -jar HealthBud.jar to start the application.
-5. Start entering commands to log your fitness activities!
+## Quick start
+1. Ensure you have Java 17 or above installed in your Computer. You can download the latest version of Java from here.
+
+
+2. Download the latest .jar file from here.
+
+
+3. Copy the file to the folder you want to use as the home folder for HealthBud.
+
+
+4. Open a command terminal, cd into the folder you put the jar file in, and use the java -jar HealthBud.jar command to run the application.
+
+
+5. Your command terminal should show the following:
+
+//insert healthbud starting page
+
+6. Type the command in the command terminal and press Enter to execute it.
+
+
+   Some example commands you can try:
+
+- `add meal` chicken rice `/cal` 200 `/d` 02/02/2025 `/t` 1700: Adds a meal type task with description chicken rice, calories 200, date 02/02/2025 and time 1700 to the task tracker.
+
+
+- `list workout`: Lists all workout logs.
+
+
+- `delete water` 1: Deletes the water log with index 1.
+
+
+- `bye`: Exits the app.
+
+
 
 ## Features
 
@@ -167,8 +198,9 @@ Format: `sum <cal|vol> /d <date>`
 
 Example of usage: `sum cal /d 02/02/2025`
 ``` 
-Total calories consumed: 0
+Total calories consumed: 500
 ``` 
+
 ### Clear
 Clear the respective log
 
@@ -178,6 +210,7 @@ Example of usage: `clear meal`
 ``` 
 Noted. I've removed all logs.
 ``` 
+
 ### Status Change
 Update your cutting/bulking status
 
@@ -187,6 +220,7 @@ Example of usage: `status change bulking`
 ``` 
 Status updated to: bulking
 ``` 
+
 ### Status report
 View your current cutting/bulking progress
 

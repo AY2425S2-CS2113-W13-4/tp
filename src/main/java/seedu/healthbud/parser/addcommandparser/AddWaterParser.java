@@ -1,7 +1,7 @@
 package seedu.healthbud.parser.addcommandparser;
 
 import seedu.healthbud.LogList;
-import seedu.healthbud.command.onelogandinput.AddWaterCommand;
+import seedu.healthbud.command.singlelog.AddWaterCommand;
 import seedu.healthbud.exception.InvalidDateFormatException;
 import seedu.healthbud.exception.InvalidWaterException;
 import seedu.healthbud.parser.DateParser;
