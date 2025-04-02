@@ -262,4 +262,22 @@ public class AddWorkoutCommandTest {
                 AddWorkoutParser.parse(workoutLogs, input));
     }
 
+    @Test
+    void validWorkoutAddsToLogList_expectSucess() throws InvalidWorkoutException{
+        LogList workoutLogs = new LogList();
+        String input = "add workout squats /r 10 /s 3 /d 25-12-2023 /w 50";
+
+        AddWorkoutCommand command = new AddWorkoutCommand(workoutLogs, input, "squats", "10", "3", "25 Dec 2023", "50");
+        command.execute();
+
+        Workout workout = (Workout) workoutLogs.getLog(0);
+        assertEquals("squats", workout.getName());
+        assertEquals("10", workout.getReps());
+        assertEquals("25 Dec 2023", workout.getDate());
+        assertEquals("50", workout.getWeight());
+        assertEquals("3", workout.getSets());
+
+        String expected = "squats (3 sets of 50 kg for 10 reps) on 25 Dec 2023";
+        assertEquals(expected, workout.toString());
+    }
 }

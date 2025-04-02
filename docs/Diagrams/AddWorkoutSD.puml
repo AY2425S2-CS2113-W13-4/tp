@@ -8,28 +8,28 @@ participant ":ParserParameters" as ParserParameters
 participant ":DateParser" as DateParser
 participant ":AddWorkoutCommand" as AddWorkoutCommand
 participant "workoutLogs:LogList" as LogList
-participant "new:WorkOUT" as WorkOUT
+participant "new:Workout" as Workout
 
-User -> HealthBud : "add workout squats /r 10 /s 3 /d 25-12-2023 /w 50"
+User -> HealthBud : add workout
 activate HealthBud
 
-HealthBud -> GeneralParser : handleInput("add workout, ...")
+HealthBud -> GeneralParser : handleInput(exerciseName, sets, reps, dates, weight)
 activate GeneralParser
 
-GeneralParser -> AddParser : parse("workout", workoutLogs, ...)
+GeneralParser -> AddParser : parse(input)
 activate AddParser
 
 AddParser -> AddWorkoutParser : parse(workoutLogs, input)
 activate AddWorkoutParser
 
-AddWorkoutParser -> ParserParameters : parseParameters(/r 10 /s 3 /d 2023-12-25 /w 50)
+AddWorkoutParser -> ParserParameters : parseParameters(input)
 activate ParserParameters
-ParserParameters --> AddWorkoutParser : params {r: "10", s: "3", d: "2023-12-25", w: "50"}
+ParserParameters --> AddWorkoutParser : params {key:value}
 deactivate ParserParameters
 
-AddWorkoutParser -> DateParser : formatDate("25-12-2023")
+AddWorkoutParser -> DateParser : formatDate()
 activate DateParser
-DateParser --> AddWorkoutParser : "25 Dec 2023"
+DateParser --> AddWorkoutParser : formattedDate
 deactivate DateParser
 
 AddWorkoutParser --> AddParser : AddWorkoutCommand
@@ -41,12 +41,12 @@ deactivate AddParser
 GeneralParser -> AddWorkoutCommand : execute()
 activate AddWorkoutCommand
 
-AddWorkoutCommand -> WorkOUT : new("squats", "10", "3", "25 Dec 2023", "50")
-activate WorkOUT
-WorkOUT --> AddWorkoutCommand
-deactivate WorkOUT
+AddWorkoutCommand -> Workout : new(values)
+activate Workout
+Workout --> AddWorkoutCommand
+deactivate Workout
 
-AddWorkoutCommand -> LogList : addLog(new WorkOUT)
+AddWorkoutCommand -> LogList : addLog(new Workout)
 activate LogList
 LogList --> AddWorkoutCommand
 deactivate LogList

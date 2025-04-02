@@ -6,6 +6,7 @@ import seedu.healthbud.LogList;
 import seedu.healthbud.command.onelogandinput.AddCardioCommand;
 import seedu.healthbud.exception.InvalidCardioException;
 import seedu.healthbud.exception.InvalidDateFormatException;
+import seedu.healthbud.log.Cardio;
 import seedu.healthbud.parser.addcommandparser.AddCardioParser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -197,4 +198,27 @@ class AddCardioCommandTest {
         assertEquals("4.2", command.getIntensity());
         assertEquals("32.5", command.getTime());
     }
+
+    @Test
+    void validCardioAddsToLogList_exepectSuccess() throws InvalidCardioException {
+
+        LogList cardioLogs = new LogList();
+        String input = "add cardio Running /s 8 /i 5 /t 90 /d 2023-12-25";
+
+        AddCardioCommand command = new AddCardioCommand(cardioLogs, input, "running", "8", "5", "90", "12 Jan 2025");
+
+        command.execute();
+
+        Cardio cardio = (Cardio) cardioLogs.getLog(0);
+        assertEquals("running", cardio.getName());
+        assertEquals("8", command.getSets());
+        assertEquals("5", command.getIntensity());
+        assertEquals("90", command.getTime());
+        assertEquals("12 Jan 2025", command.getDate());
+
+        String expected = "running (speed: 8, incline: 5, duration: 90 mins) on 12 Jan 2025";
+
+        assertEquals(expected, cardio.toString());
+    }
+
 }
