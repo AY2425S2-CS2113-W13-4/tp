@@ -152,7 +152,7 @@ The delete log feature allows users to remove a log by its index from the applic
 - One alternative was to embed the deletion logic directly in the parser or UI layer. However, this approach would mix user input handling with business logic, resulting in code that is harder to maintain and test. Delegating deletion to a specialized command class keeps the design modular and scalable.
 
 ### Sequence Diagram
-![DeleteLog.png](images/DeleteSD.png)
+![DeleteSD2.png](images/DeleteSD2.png)
 
 Diagram Explanation <br>
 
@@ -275,7 +275,7 @@ The command calculates the user's Body Mass Index (BMI) based on the provided we
 
 
 5. Sequence Diagrams
-   ![BMI_Sequence_Diagram](images/BMISD.png)
+![BMISD1.png](images/BMISD1.png)
    
 Diagram Explanation <br>
 
@@ -348,7 +348,7 @@ avoided to simplify the implementation and because the app tracks only one activ
 parser-command design pattern.
 
 ### 5. Sequence Diagrams
-![GoalSD.png](Images/GoalSD.png)
+![GoalSD1.png](images/GoalSD1.png)
 ### 6. Future Improvements
 - Input Validation: Use regex or stricter parsing to ensure only valid integers are accepted.
 - Persistent Goal Storage: Store and reload goals from file or database to retain state between sessions.

@@ -1,17 +1,17 @@
 @startuml
 actor User
 participant ":HealthBud" as HealthBud
-participant ":GeneralParser" as GeneralParser
+participant ":ParserManager" as ParserManager
 participant ":BMIParser" as BMIParser
 participant ":BMICommand" as BMICommand
 
 User -> HealthBud: "bmi weight 70kg, height is 1.75m"
 activate HealthBud
 
-HealthBud -> GeneralParser: handle input for bmi weight 70kg, height is 1.75m
-activate GeneralParser
+HealthBud -> ParserManager: handle input for bmi weight 70kg, height is 1.75m
+activate ParserManager
 
-GeneralParser -> BMIParser: parse bmi weight 70kg, height is 1.75m
+ParserManager -> BMIParser: parse bmi weight 70kg, height is 1.75m
 activate BMIParser
 
 alt valid input
@@ -23,12 +23,12 @@ else invalid input
 end
 deactivate BMIParser
 
-GeneralParser -> BMICommand: execute()
+ParserManager -> BMICommand: execute()
 activate BMICommand
 deactivate BMICommand
 
-GeneralParser --> HealthBud: success message
-deactivate GeneralParser
+ParserManager --> HealthBud: success message
+deactivate ParserManager
 
 HealthBud --> User: display result
 deactivate HealthBud

@@ -1,7 +1,7 @@
 @startuml
 actor User
 participant ":HealthBud" as HealthBud
-participant ":GeneralParser" as GeneralParser
+participant ":ParserManager" as ParserManager
 participant ":AddParser" as AddParser
 participant ":AddGoalParser" as AddGoalParser
 participant ":ParserParameters" as ParserParameters
@@ -12,10 +12,10 @@ participant "goalLogs:LogList" as LogList
 User -> HealthBud : "add goal /w 2000 /cal 1800 /kg 65"
 activate HealthBud
 
-HealthBud -> GeneralParser : handleInput("add goal ...")
-activate GeneralParser
+HealthBud -> ParserManager : handleInput("add goal ...")
+activate ParserManager
 
-GeneralParser -> AddParser : parse("goal", goalLogs, ...)
+ParserManager -> AddParser : parse("goal", goalLogs, ...)
 activate AddParser
 
 AddParser -> AddGoalParser : parse(goalLogs, input)
@@ -34,10 +34,10 @@ deactivate Goals
 AddGoalParser --> AddParser : new AddGoalCommand
 deactivate AddGoalParser
 
-AddParser --> GeneralParser : AddGoalCommand
+AddParser --> ParserManager : AddGoalCommand
 deactivate AddParser
 
-GeneralParser -> AddGoalCommand : execute()
+ParserManager -> AddGoalCommand : execute()
 activate AddGoalCommand
 
 AddGoalCommand -> Goals : getInstance()
@@ -55,11 +55,11 @@ activate LogList
 LogList --> AddGoalCommand
 deactivate LogList
 
-AddGoalCommand --> GeneralParser
+AddGoalCommand --> ParserManager
 deactivate AddGoalCommand
 
-GeneralParser --> HealthBud
-deactivate GeneralParser
+ParserManager --> HealthBud
+deactivate ParserManager
 
 HealthBud --> User
 deactivate HealthBud

@@ -1,7 +1,7 @@
 @startuml
 actor User
 participant ":HealthBud" as HealthBud
-participant ":GeneralParser" as GeneralParser
+participant ":ParserManager" as ParserManager
 participant ":AddParser" as AddParser
 participant ":AddWorkoutParser" as AddWorkoutParser
 participant ":ParserParameters" as ParserParameters
@@ -13,16 +13,16 @@ participant "new:Workout" as Workout
 User -> HealthBud : add workout
 activate HealthBud
 
-HealthBud -> GeneralParser : handleInput()
-activate GeneralParser
+HealthBud -> ParserManager : handleInput()
+activate ParserManager
 
-GeneralParser -> AddParser : parse()
+ParserManager -> AddParser : parse()
 activate AddParser
 
 AddParser -> AddWorkoutParser : parse(workoutLogs, input)
 activate AddWorkoutParser
 
-AddWorkoutParser -> ParserParameters : parseParameters(0)
+AddWorkoutParser -> ParserParameters : parseParameters()
 activate ParserParameters
 ParserParameters --> AddWorkoutParser : params
 deactivate ParserParameters
@@ -35,10 +35,10 @@ deactivate DateParser
 AddWorkoutParser --> AddParser : AddWorkoutCommand
 deactivate AddWorkoutParser
 
-AddParser --> GeneralParser : AddWorkoutCommand
+AddParser --> ParserManager : AddWorkoutCommand
 deactivate AddParser
 
-GeneralParser -> AddWorkoutCommand : execute()
+ParserManager -> AddWorkoutCommand : execute()
 activate AddWorkoutCommand
 
 AddWorkoutCommand -> Workout : new()
@@ -51,11 +51,11 @@ activate LogList
 LogList --> AddWorkoutCommand
 deactivate LogList
 
-AddWorkoutCommand --> GeneralParser
+AddWorkoutCommand --> ParserManager
 deactivate AddWorkoutCommand
 
-GeneralParser --> HealthBud
-deactivate GeneralParser
+ParserManager --> HealthBud
+deactivate ParserManager
 
 HealthBud --> User
 deactivate HealthBud
