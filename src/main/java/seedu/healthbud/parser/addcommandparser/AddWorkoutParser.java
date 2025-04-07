@@ -29,7 +29,6 @@ public class AddWorkoutParser {
      * @throws InvalidWorkoutException if the input format is invalid or required parameters are missing.
      * @throws InvalidDateFormatException if the date provided cannot be parsed.
      */
-    //@@author Ahmish15
     public static AddWorkoutCommand parse(LogList workoutLogs, String input)
             throws InvalidWorkoutException, InvalidDateException, InvalidDateFormatException, HealthBudException {
 
