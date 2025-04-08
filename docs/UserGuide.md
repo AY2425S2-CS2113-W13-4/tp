@@ -350,20 +350,20 @@ You can view or edit this file using any text editor.
 |---------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
 | ```help```          | ```help```                                                                                                                              |
 | ```bye```           | ```bye```                                                                                                                               |
-| ```recommend```     | recommend [muscle_group] <br/> e.g ```recommend biceps```                                                                               |
-| ```bmi```           | bmi /w [weight_in_kg] /h [height_in_m] <br/> e.g ```bmi /w 75 /h 1.8```                                                                 |
-| ```add workout```   | add workout [exercise] /w [weight in kg] /r [reps] /s [sets] /d [date] <br/> e.g ```add workout bench /w 100 /r 8 /s 3 /d 02/02/2025``` |
-| ```add meal```      | add meal [meal_name] /cal [calories] /d [date] /t [time] <br/> e.g ```add meal chicken rice /cal 200 /d 02/02/2025 /t 1700```           |
-| ```add water```     | add water /ml [volume] /d [date] /t [time] <br/> e.g ```add water /ml 1000 /d 02/02/2025 /t 1700```                                     |
-| ```add pb```        | add pb [exercise] /w [weight_in_kg] /d [date] <br/> e.g ```add pb bench /w 120 /d 02/02/2025```                                         |
-| ```add cardio```    | add cardio [exercise] /s [speed] /i [incline] /t [duration] /d [date] <br/> e.g ```add cardio run /s 8 /i 5 /t 30 /d 02/02/2025```      |
-| ```sum```           | sum [cal/vol/cardio] /d [date] <br/> e.g ```sum cal /d 02/02/2025```                                                                    |
-| ```clear```         | clear [pb\|meal\|workout\|water\|cardio] <br/> e.g ```clear meal```                                                                     |
-| ```view goal```     | view goal <br/> e.g ```view goal```                                                                                                     |
-| ```add goal```      | add goal /ml [waterGoals] /cal [calorieGoals] /kg [weightGoals] <br/> e.g ```add goal /ml 2000 /cal 3000 /kg 70```                      |
-| ```track goal```    | track goal /d [date] <br/> e.g ```track goal /d 02/02/2025```                                                                           |
-| ```status change``` | status change [cutting\|bulking] <br/> e.g ```status change bulking```                                                                  |
-| ```status report``` | status report [date] <br/> e.g ```status report 26/12/2023```                                                                           |
-| ```search```        | search [logType] /k [keyword] OR search [logType] /d [date] <br/> e.g ```search workout /k bench```                                     |
-| ```list```          | list [logType] <br/> e.g ```list pb```                                                                                                  |
-| ```delete```        | delete [logType] [index] <br/> e.g ```delete pb 2```                                                                                    |
+| ```recommend```     | recommend [muscle_group] e.g ```recommend biceps```                                                                               |
+| ```bmi```           | bmi /w [weight_in_kg] /h [height_in_m]  e.g ```bmi /w 75 /h 1.8```                                                                 |
+| ```add workout```   | add workout [exercise] /w [weight in kg] /r [reps] /s [sets] /d [date]  e.g ```add workout bench /w 100 /r 8 /s 3 /d 02/02/2025``` |
+| ```add meal```      | add meal [meal_name] /cal [calories] /d [date] /t [time]  e.g ```add meal chicken rice /cal 200 /d 02/02/2025 /t 1700```           |
+| ```add water```     | add water /ml [volume] /d [date] /t [time]  e.g ```add water /ml 1000 /d 02/02/2025 /t 1700```                                     |
+| ```add pb```        | add pb [exercise] /w [weight_in_kg] /d [date]  e.g ```add pb bench /w 120 /d 02/02/2025```                                         |
+| ```add cardio```    | add cardio [exercise] /s [speed] /i [incline] /t [duration] /d [date]  e.g ```add cardio run /s 8 /i 5 /t 30 /d 02/02/2025```      |
+| ```sum```           | sum [cal/vol/cardio] /d [date]  e.g ```sum cal /d 02/02/2025```                                                                    |
+| ```clear```         | clear [pb\|meal\|workout\|water\|cardio] e.g ```clear meal```                                                                     |
+| ```view goal```     | view goal e.g ```view goal```                                                                                                     |
+| ```add goal```      | add goal /ml [waterGoals] /cal [calorieGoals] /kg [weightGoals] e.g ```add goal /ml 2000 /cal 3000 /kg 70```                      |
+| ```track goal```    | track goal /d [date] e.g ```track goal /d 02/02/2025```                                                                           |
+| ```status change``` | status change [cutting\|bulking] e.g ```status change bulking```                                                                  |
+| ```status report``` | status report [date] e.g ```status report 26/12/2023```                                                                           |
+| ```search```        | search [logType] /k [keyword] OR search [logType] /d [date] e.g ```search workout /k bench```                                     |
+| ```list```          | list [logType] e.g ```list pb```                                                                                                  |
+| ```delete```        | delete [logType] [index] e.g ```delete pb 2```                                                                                    |
